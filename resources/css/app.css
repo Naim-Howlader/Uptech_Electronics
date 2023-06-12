@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    .font-jost {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .font-kanit {
+        font-family: 'Kanit', sans-serif;
+    }
+
+    .font-lobster {
+        font-family: 'Lobster', cursive;
+    }
+
+    .nav {
+        @apply relative tracking-[1px];
+    }
+
+    .nav::after {
+        @apply content-[''] bg-red-500 h-[3px] w-[0] left-0 -bottom-[28px] absolute;
+    }
+
+    .nav:hover::after {
+        @apply w-[100%] duration-300;
+    }
+}

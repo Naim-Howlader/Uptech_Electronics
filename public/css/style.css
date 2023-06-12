@@ -1,0 +1,30 @@
+.navicon {
+    top: 40%;
+    left: 20px;
+    position: absolute;
+    opacity: 50%;
+}
+
+.navicon:hover {
+    opacity: 100%;
+}
+
+.navicon-r {
+    top: 40%;
+    right: 20px;
+    position: absolute;
+    opacity: 50%;
+}
+
+.navicon-r:hover {
+    opacity: 100%;
+}
+
+.product-link-h:hover {
+    color: red;
+}
+
+.active {
+    background-color: rgb(250, 219, 219);
+    color: red;
+}
