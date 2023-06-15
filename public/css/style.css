@@ -28,3 +28,8 @@
     background-color: rgb(250, 219, 219);
     color: red;
 }
+.activedas {
+    border-radius: 15px;
+    background-color: #EAEDFC;
+    color: black;
+}

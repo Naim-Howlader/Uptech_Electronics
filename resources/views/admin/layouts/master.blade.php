@@ -1,0 +1,6 @@
+@include('admin.components.header')
+@include('admin.components.bg')
+@include('admin.components.sidenav')
+@include('admin.components.topnav')
+@yield('main')
+@include('admin.components.footer')
