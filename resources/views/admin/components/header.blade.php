@@ -17,6 +17,11 @@
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <!-- Main Styling -->
     <link href="{{asset('admin/assets/css/argon-dashboard-tailwind.css?v=1.0.1')}}" rel="stylesheet" />
+    <!--Regular Datatables CSS-->
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!--Responsive Extension Datatables CSS-->
+    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/customDataTable.css') }}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
   </head>

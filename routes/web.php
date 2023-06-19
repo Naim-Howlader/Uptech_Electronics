@@ -57,9 +57,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
 * *-------Admin Product route--------
 */
 Route::group(['prefix' => 'category', 'as' => 'category.'], function(){
-    Route::get('/add-product', [CategoryController::class, 'add'])->name('add');
+    Route::get('/add-category', [CategoryController::class, 'add'])->name('add');
     Route::post('/insert-category', [CategoryController::class, 'insert'])->name('insert');
     Route::get('/edit-category/{id}', [CategoryController::class, 'edit'])->name('edit');
     Route::post('/update-category/{id}', [CategoryCOntroller::class, 'update'])->name('update');
     Route::get('/delete-category/{id}', [categoryController::class, 'delete'])->name('delete');
+});
+Route::group(['prefix' => 'product', 'as' => 'product.'], function(){
+    Route::get('/add-product', [ProductController::class, 'add',])->name('add');
+    Route::post('/insert-product', [ProductController::class, 'insert',])->name('insert');
+    Route::get('/edit-product/{id}', [ProductController::class, 'edit',])->name('edit');
+    Route::post('/update-product/{id}', [ProductController::class, 'update',])->name('update');
 });

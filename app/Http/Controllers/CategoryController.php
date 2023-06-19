@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -37,12 +38,14 @@ class CategoryController extends Controller
             'name' => 'required',
         ]);
         $categories = Category::find($id);
+        $products = DB::table('products')->where('category_id', $id);
         $categories->name = $request['name'];
         if($request->status == 'on'){
             $categories->status = 'active';
         }
         else{
             $categories->status = 'inactive';
+            $products->update(['status'=>'inactive']);
         }
         session()->flash('success', 'Category updated successfully');
         $categories->update();
