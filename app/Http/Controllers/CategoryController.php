@@ -8,7 +8,7 @@ use App\Models\Category;
 class CategoryController extends Controller
 {
     public function add(){
-        return view('admin.product.add-product');
+        return view('admin.product.add-category');
     }
     public function insert(Request $request){
         $request->validate([
@@ -30,7 +30,7 @@ class CategoryController extends Controller
         }
         $url = route('category.update',['id'=>$id]);
         $data = compact('categories','url');
-        return view('admin.product.update-product')->with($data);
+        return view('admin.product.update-category')->with($data);
     }
     public function update($id, Request $request){
         $request->validate([
