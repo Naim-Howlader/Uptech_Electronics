@@ -7,26 +7,30 @@
             <div class="title pb-4">
                 <h2 class="font-jost font-semibold uppercase text-3xl lg:text-4xl">top products</h2>
             </div>
-            <div class="pronav uppercase pb-3 overflow-x-scroll md:overflow-x-hidden">
+            <div class="filter-button-group pronav uppercase pb-3 overflow-x-scroll md:overflow-x-hidden">
                 <ul class="flex space-x-5 ">
-                    <li
+                    <li data-filter="*"
+                        class="whitespace-nowrap product-link md:px-5 md:py-2 product-link-h text-sm lg:text-base lg:font-semibold cursor-pointer  uppercase font-jost font-medium  duration-150">
+                        all
+                    </li>
+                    <li data-filter=".audvid"
                         class="whitespace-nowrap product-link md:px-5 md:py-2 product-link-h text-sm lg:text-base lg:font-semibold cursor-pointer  uppercase font-jost font-medium  duration-150">
                         audio
                         & video
                     </li>
-                    <li
+                    <li data-filter=".campho"
                         class="whitespace-nowrap product-link md:px-5 md:py-2 product-link-h text-sm lg:text-base lg:font-semibold cursor-pointer  uppercase font-jost font-medium duration-150">
                         camera &
                         photo</li>
-                    <li
+                    <li data-filter=".headphone"
                         class="whitespace-nowrap product-link md:px-5 md:py-2 product-link-h text-sm lg:text-base lg:font-semibold cursor-pointer  uppercase font-jost font-medium  duration-150">
                         headphone</li>
                 </ul>
             </div>
         </div>
         <div class="all-product pt-2 lg:pt-5">
-            <div class="grid grid-cols-12 gap-x-5 gap-y-10">
-                <div class="single-product border col-span-6 md:col-span-4 lg:col-span-3">
+            <div class="grid grid-cols-12  gap-y-10 all-pro">
+                <div class="single-product border col-span-6 md:col-span-4 lg:col-span-3 w-full sm:w-6/12 lg:w-4/12 audvid campho">
                     <div class="image relative group">
                         <img src="{{ asset('frontend image/product-1.jpg') }}" alt="" class="">
                         <div
@@ -71,7 +75,7 @@
                     </div>
 
                 </div>
-                <div class="single-product border col-span-6 md:col-span-4 lg:col-span-3">
+                <div class="single-product border w-full sm:w-6/12 lg:w-4/12 col-span-6 md:col-span-4 lg:col-span-3">
                     <div class="image relative group">
                         <img src="{{ asset('frontend image/product-3.jpg') }}" alt="" class="">
                         <div
@@ -115,7 +119,7 @@
                         </h2>
                     </div>
                 </div>
-                <div class="single-product border col-span-6 md:col-span-4 lg:col-span-3">
+                <div class="single-product border w-full sm:w-6/12 lg:w-4/12 col-span-6 md:col-span-4 lg:col-span-3 audvid">
                     <div class="image relative group">
                         <img src="{{ asset('frontend image/product-4.jpg') }}" alt="" class="">
                         <div class="hidden group-hover:block absolute bottom-3 w-full px-3 sm:px-10">
@@ -158,7 +162,7 @@
                         </h2>
                     </div>
                 </div>
-                <div class="single-product border col-span-6 md:col-span-4 lg:col-span-3">
+                <div class="single-product border col-span-6 w-full sm:w-6/12 lg:w-4/12 md:col-span-4 lg:col-span-3 audvid">
                     <div class="image relative group">
                         <img src="{{ asset('frontend image/product-5.jpg') }}" alt="" class="">
                         <div class="hidden group-hover:block absolute bottom-3 w-full px-3 sm:px-10">
@@ -202,7 +206,7 @@
                         </h2>
                     </div>
                 </div>
-                <div class="single-product border col-span-6 md:col-span-4 lg:col-span-3">
+                <div class="single-product border col-span-6 w-full sm:w-6/12 lg:w-4/12 md:col-span-4 lg:col-span-3 headphone">
                     <div class="image relative group">
                         <img src="{{ asset('frontend image/product-6.jpg') }}" alt="" class="">
                         <div class="hidden group-hover:block absolute bottom-3 w-full px-3 sm:px-10">
@@ -246,7 +250,7 @@
                         </h2>
                     </div>
                 </div>
-                <div class="single-product border col-span-6 md:col-span-4 lg:col-span-3">
+                <div class="single-product border col-span-6 w-full sm:w-6/12 lg:w-4/12 md:col-span-4 lg:col-span-3 campho">
                     <div class="image relative group">
                         <img src="{{ asset('frontend image/product-2.jpg') }}" alt="" class="">
                         <div class="hidden group-hover:block absolute bottom-3 w-full px-3 sm:px-10">
@@ -290,7 +294,7 @@
                         </h2>
                     </div>
                 </div>
-                <div class="single-product border col-span-6 md:col-span-4 lg:col-span-3">
+                <div class="single-product border col-span-6 w-full sm:w-6/12 lg:w-4/12 md:col-span-4 lg:col-span-3 campho">
                     <div class="image relative group">
                         <img src="{{ asset('frontend image/product-7.jpg') }}" alt="" class="">
                         <div class="hidden group-hover:block absolute bottom-3 w-full px-3 sm:px-10">
@@ -334,7 +338,7 @@
                         </h2>
                     </div>
                 </div>
-                <div class="single-product border col-span-6 md:col-span-4 lg:col-span-3">
+                <div class="single-product border col-span-6 w-full sm:w-6/12 lg:w-4/12 md:col-span-4 lg:col-span-3 headphone">
                     <div class="image relative group">
                         <img src="{{ asset('frontend image/product-8.jpg') }}" alt="" class="">
                         <div class="hidden group-hover:block absolute bottom-3 w-full px-3 sm:px-10">

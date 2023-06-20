@@ -36,6 +36,7 @@ class ProductController extends Controller
             $products->status = 'active';
         }
         $products->save();
+        session()->flash('success', 'Product added successfully');
         return redirect()->route('admin.products');
     }
     public function edit($id, Request $request){
@@ -78,7 +79,16 @@ class ProductController extends Controller
             $products->status = 'inactive';
         }
         $products->update();
+        session()->flash('success', 'Product updated successfully');
         return redirect()->route('admin.products');
-
+    }
+    public function delete($id){
+        $products = Product::find($id);
+        if(empty($products)){
+            return redirect()->route('admin.products');
+        }
+        $products->delete();
+        session()->flash('success', 'Product deleted successfully');
+        return redirect()->route('admin.products');
     }
 }

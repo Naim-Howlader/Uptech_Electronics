@@ -60,6 +60,15 @@ jQuery(function ($) {
             }
         });
 });
+// init Isotope
+var $grid = $('.all-pro').isotope({
+    // options
+  });
+  // filter items on button click
+  $('.pronav').on( 'click', 'li', function() {
+    var filterValue = $(this).attr('data-filter');
+    $grid.isotope({ filter: filterValue });
+  });
 
 
 

@@ -56,8 +56,8 @@ class CategoryController extends Controller
         if(empty($categories)){
             return redirect()->route('admin.products');
         }
-        session()->flash('success', 'Category deleted successfully');
         $categories->delete();
+        session()->flash('success', 'Category deleted successfully');
         return redirect()->route('admin.products');
     }
 }
