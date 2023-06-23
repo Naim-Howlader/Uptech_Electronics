@@ -46,6 +46,7 @@ require __DIR__.'/adminauth.php';
 * *-------Front end route--------
 */
  Route::get('/', [CommonController::class, 'index'])->name('index');
+ Route::get('/all-products', [CommonController::class, 'allProducts'])->name('allproducts');
 
 /**
 * *-------Admin Dashboard route--------

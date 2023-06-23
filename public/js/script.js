@@ -24,15 +24,15 @@ activelink.forEach(singlelink => {
         this.classList.add('active');
     });
 });
-$(document).ready(function() {
-    $("ul:eq(1) > li").click(function() {
-       $('ul:eq(1) > li').removeClass("active");
-       $(this).addClass("active");
+$(document).ready(function () {
+    $("ul:eq(1) > li").click(function () {
+        $('ul:eq(1) > li').removeClass("active");
+        $(this).addClass("active");
     });
 })
 jQuery(function ($) {
-    $("ul a")
-        .click(function(e) {
+    $(".dash ul a")
+        .click(function (e) {
             var link = $(this);
 
             var item = link.parent("li");
@@ -52,7 +52,7 @@ jQuery(function ($) {
                 e.preventDefault();
             }
         })
-        .each(function() {
+        .each(function () {
             var link = $(this);
             if (link.get(0).href === location.href) {
                 link.addClass("activedas").parents("li").addClass("activedas");
@@ -63,12 +63,12 @@ jQuery(function ($) {
 // init Isotope
 var $grid = $('.all-pro').isotope({
     // options
-  });
-  // filter items on button click
-  $('.pronav').on( 'click', 'li', function() {
+});
+// filter items on button click
+$('.pronav').on('click', 'li', function () {
     var filterValue = $(this).attr('data-filter');
     $grid.isotope({ filter: filterValue });
-  });
+});
 
 
 

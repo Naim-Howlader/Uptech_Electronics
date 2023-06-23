@@ -78,7 +78,7 @@
                 <ul
                     class="flex flex-col text-[16px] font-medium p-4 lg:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 lg:flex-row lg:space-x-8 lg:mt-0 lg:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                     <li class="nav">
-                        <a href="#"
+                        <a href="{{ route('index') }}"
                             class="block py-2 pl-3 pr-4 text-white hover:text-red-500 duration-300 bg-blue-700 rounded lg:bg-transparent lg:text-black lg:p-0 lg:dark:text-blue-500 dark:bg-blue-600 lg:dark:bg-transparent"
                             aria-current="page">Home</a>
                     </li>
@@ -97,8 +97,9 @@
                             <ul class="py-2 text-sm text-gray-700 dark:text-gray-400"
                                 aria-labelledby="dropdownLargeButton">
                                 <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                                    <a href="{{ route('allproducts') }}"
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">All
+                                        Products</a>
                                 </li>
                                 <li>
                                     <a href="#"
