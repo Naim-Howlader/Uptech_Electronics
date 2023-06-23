@@ -40,7 +40,7 @@ Route::get('/admin/dashboard', function () {
 
 require __DIR__.'/adminauth.php';
 
-
+Route::get('/image', [CommonController::class, 'image'])->name('image');
 
 /**
 * *-------Front end route--------

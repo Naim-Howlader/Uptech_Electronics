@@ -18,4 +18,7 @@ class CommonController extends Controller
         $data = compact('categories');
         return view('frontend.all-products')->with($data);
     }
+    public function image(){
+        return env('APP_URL');
+    }
 }

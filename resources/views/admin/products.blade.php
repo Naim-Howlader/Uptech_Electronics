@@ -177,7 +177,13 @@
                                                 Product Image
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-center">
+                                                Product Mini Description
+                                            </th>
+                                            <th scope="col" class="px-6 py-3 text-center">
                                                 Product Description
+                                            </th>
+                                            <th scope="col" class="px-6 py-3 text-center">
+                                                Product Feature
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-center">
                                                 Action
@@ -222,7 +228,17 @@
                                                 </td>
                                                 <td class="px-6 py-4 flex">
                                                     <div class="min-w-[500px]">
+                                                        {!! $product->mini_description !!}
+                                                    </div>
+                                                </td>
+                                                <td class="px-6 py-4 flex">
+                                                    <div class="min-w-[500px]">
                                                         {!! $product->description !!}
+                                                    </div>
+                                                </td>
+                                                <td class="px-6 py-4 flex">
+                                                    <div class="min-w-[500px]">
+                                                        {!! $product->feature !!}
                                                     </div>
                                                 </td>
                                                 <td class="px-6 py-4">

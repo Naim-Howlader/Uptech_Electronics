@@ -24,42 +24,28 @@ activelink.forEach(singlelink => {
         this.classList.add('active');
     });
 });
-$(document).ready(function () {
-    $("ul:eq(1) > li").click(function () {
-        $('ul:eq(1) > li').removeClass("active");
-        $(this).addClass("active");
-    });
-})
-jQuery(function ($) {
-    $(".dash ul a")
-        .click(function (e) {
-            var link = $(this);
 
-            var item = link.parent("li");
+$(document).on('click', '.view-btn', function () {
+    let image = $(this).data('image');
+    let name = $(this).data('name');
+    let full = 'http://localhost:8000/' + image;
+    let price = $(this).data('price');
+    let feature = $(this).data('feature');
+    let description = $(this).data('description');
+    let category = $(this).data('category');
+    console.log(description);
 
-            if (item.hasClass("activedas")) {
-                item.removeClass("activedas").children("a").removeClass("activedas");
-            } else {
-                item.addClass("activedas").children("a").addClass("activedas");
-            }
 
-            if (item.children("ul").length > 0) {
-                var href = link.attr("href");
-                link.attr("href", "#");
-                setTimeout(function () {
-                    link.attr("href", href);
-                }, 300);
-                e.preventDefault();
-            }
-        })
-        .each(function () {
-            var link = $(this);
-            if (link.get(0).href === location.href) {
-                link.addClass("activedas").parents("li").addClass("activedas");
-                return false;
-            }
-        });
+
+    // let name = $('#id').val(id);
+    document.getElementById("name").innerHTML = name;
+    document.getElementById("feature").innerHTML = feature;
+    document.getElementById("description").innerHTML = description;
+    document.getElementById("category").innerHTML = category;
+    document.getElementById("price").innerHTML = '$' + price;
+    document.getElementById("image").src = 'http://localhost:8000/' + image;
 });
+
 // init Isotope
 var $grid = $('.all-pro').isotope({
     // options
@@ -69,6 +55,8 @@ $('.pronav').on('click', 'li', function () {
     var filterValue = $(this).attr('data-filter');
     $grid.isotope({ filter: filterValue });
 });
+
+
 
 
 

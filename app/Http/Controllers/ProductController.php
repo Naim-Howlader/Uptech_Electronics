@@ -17,7 +17,9 @@ class ProductController extends Controller
     public function insert(Request $request){
         $request->validate([
             'name' => 'required',
+            'mini_description' => 'required',
             'description' => 'required',
+            'feature' => 'required',
             'price' => 'required',
             'image' => 'required',
             'category' => 'required',
@@ -28,7 +30,9 @@ class ProductController extends Controller
 
         $products = new Product;
         $products->name = $request['name'];
+        $products->mini_description = nl2br($request['mini_description']);
         $products->description = nl2br($request['description']);
+        $products->feature = nl2br($request['feature']);
         $products->price = $request['price'];
         $products->image = $destination.$image;
         $products->category_id = $request['category'];
@@ -52,14 +56,18 @@ class ProductController extends Controller
     public function update($id, Request $request){
         $request->validate([
             'name' => 'required',
+            'mini_description' => 'required',
             'description' => 'required',
+            'feature' => 'required',
             'price' => 'required',
             'category' => 'required',
 
         ]);
         $products = Product::find($id);
         $products->name = $request['name'];
+        $products->mini_description = nl2br($request['mini_description']);
         $products->description = nl2br($request['description']);
+        $products->feature = nl2br($request['feature']);
         $products->price = $request['price'];
         $products->category_id = $request['category'];
         if($request->hasFile('image')){
