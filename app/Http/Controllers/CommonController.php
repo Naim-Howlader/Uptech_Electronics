@@ -10,7 +10,8 @@ class CommonController extends Controller
 {
     public function index(){
         $categories = Category::with('products')->where('status', 'active')->latest()->take(3)->get();
-        $data = compact('categories');
+        $url = env('APP_URL');
+        $data = compact('categories', 'url');
         return view('frontend.index')->with($data);
     }
     public function allProducts(){

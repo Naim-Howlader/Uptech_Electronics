@@ -58,7 +58,7 @@
                                             data-image="{{ $product->image }}" data-name="{{ $product->name }}"
                                             data-price="{{ $product->price }}"
                                             data-feature="{{ $product->feature }}"data-description="{{ $product->mini_description }}"
-                                            data-category="{{ $category->name }}">
+                                            data-category="{{ $category->name }}" data-url="{{ $url }}">
                                             fullscreen
                                         </span>
                                     </div>

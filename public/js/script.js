@@ -33,7 +33,8 @@ $(document).on('click', '.view-btn', function () {
     let feature = $(this).data('feature');
     let description = $(this).data('description');
     let category = $(this).data('category');
-    console.log(description);
+    let url = $(this).data('url');
+    console.log(url);
 
 
 
@@ -43,7 +44,7 @@ $(document).on('click', '.view-btn', function () {
     document.getElementById("description").innerHTML = description;
     document.getElementById("category").innerHTML = category;
     document.getElementById("price").innerHTML = '$' + price;
-    document.getElementById("image").src = 'http://localhost:8000/' + image;
+    document.getElementById("image").src = url + '/' + image;
 });
 
 // init Isotope
