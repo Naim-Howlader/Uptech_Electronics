@@ -16,7 +16,8 @@ class CommonController extends Controller
     }
     public function allProducts(){
         $categories = Category::with('products')->where('status', 'active')->latest()->get();
-        $data = compact('categories');
+        $url = env('APP_URL');
+        $data = compact('categories','url');
         return view('frontend.all-products')->with($data);
     }
     public function image(){

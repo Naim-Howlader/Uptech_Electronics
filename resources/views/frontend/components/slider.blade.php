@@ -1,4 +1,4 @@
-<div class="owl-carousel owl-theme ">
+<div class="owl-carousel owl-theme topbar">
     <div class="item relative">
         <img src="{{ asset('frontend image/slider2.jpg') }}" alt="" srcset=""
             class="w-full h-[350px] sm:h-[400px] lg:h-full relative">

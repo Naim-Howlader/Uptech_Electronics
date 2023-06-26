@@ -1,9 +1,10 @@
 
-$('.owl-carousel').owlCarousel({
+$('.topbar').owlCarousel({
     loop: true,
 
     nav: true,
     dots: false,
+    margin: 10,
     navText: ['<span class="material-symbols-outlined navicon border text-white p-2">arrow_back_ios</span >', '<span class="material-symbols-outlined navicon-r border text-white p-2">arrow_forward_ios</span>'],
     responsive: {
         0: {
@@ -17,6 +18,27 @@ $('.owl-carousel').owlCarousel({
         }
     }
 })
+$('.category').owlCarousel({
+    loop: true,
+    dots: true,
+    margin: 20,
+    responsive: {
+        0: {
+            items: 2
+        },
+        640: {
+            items: 2
+        },
+        768: {
+            items: 3
+        },
+        1024: {
+            items: 4
+        }
+    }
+})
+
+
 let activelink = document.querySelectorAll('.product-link');
 activelink.forEach(singlelink => {
     singlelink.addEventListener('click', function () {
@@ -34,11 +56,7 @@ $(document).on('click', '.view-btn', function () {
     let description = $(this).data('description');
     let category = $(this).data('category');
     let url = $(this).data('url');
-    console.log(url);
-
-
-
-    // let name = $('#id').val(id);
+    //console.log(url);
     document.getElementById("name").innerHTML = name;
     document.getElementById("feature").innerHTML = feature;
     document.getElementById("description").innerHTML = description;

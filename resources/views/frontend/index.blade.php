@@ -2,7 +2,7 @@
 @section('main')
     @include('frontend.components.slider')
     {{-- *Top Product section start here --}}
-    <div class="top-product-section px-5 lg:px-10 pt-3 lg:pt-8">
+    <div class="top-product-section px-2 sm:px-5 lg:px-10 pt-3 lg:pt-8">
         <div class="md:flex items-center justify-between">
             <div class="title pb-4">
                 <h2 class="font-jost font-semibold uppercase text-3xl lg:text-4xl">top products</h2>
@@ -191,7 +191,8 @@
         {{-- *Top Product section end here --}}
 
         {{-- *Limited product section start here --}}
-        <div class="limited-product-section grid grid-cols-12 gap-y-5 sm:px-14 md:px-0 md:space-x-5 pb-10">
+        <div
+            class="limited-product-section grid grid-cols-12 gap-y-5 sm:px-14 md:px-0 md:space-x-5 pb-10 overflow-x-hidden">
             <div class="single-box relative h-[300px] md:h-[350px] lg:h-[400px] overflow-hidden col-span-12 md:col-span-6">
                 <img class="object-cover w-full h-full transition-transform duration-1000 transform hover:scale-125"
                     src="{{ asset('frontend image/vr.png') }}" alt="Image">
@@ -215,15 +216,51 @@
             </div>
         </div>
         {{-- *Limited product section end here --}}
-        <div class="relative w-64 h-64 bg-gray-200 flex justify-center items-center">
+
+
+
+        {{-- *Category section start here --}}
+        <div class="category-section relative overflow-hidden mb-5">
+            <img src="{{ asset('frontend image/category2-bg.jpg') }}" alt="" srcset=""
+                class="h-[450px] sm:h-[550px] lg:h-[600px] w-full">
+            <div class="text absolute top-[10%] left-1/2 transform -translate-x-1/2 text-white ">
+                <h2 class="text-xl md:text-2xl lg:text-[3xl] font-jost font-bold uppercase">shop by categories</h2>
+                <div class="flex justify-center items-center space-x-1 mt-2">
+                    <div class="w-1 h-3 bg-red-700"></div>
+                    <div class="w-1 h-5 bg-red-700"></div>
+                    <div class="w-1 h-3 bg-red-700"></div>
+                    <div class="w-1 h-5 bg-red-700"></div>
+                    <div class="w-1 h-3 bg-red-700"></div>
+                </div>
+            </div>
             <div
-                class="opacity-0 transition-all duration-300 absolute inset-0 flex justify-center items-center hover:opacity-100 hover:rotate-180">
-                <svg class="h-12 w-12 text-gray-600 transform rotate-0" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 6v6m0 0v6m0-6h6m-6 0H6">
-                    </path>
-                </svg>
+                class="slider absolute top-[30%] px-5 grid grid-cols-12 space-x-5 gap-x-10 owl-carousel owl-theme category">
+                <div class="single-item col-span-6 relative">
+                    <img src="{{ asset('frontend image/cate1.jpg') }}" alt="">
+                    <h2
+                        class="bg-transparent text-black absolute bottom-[10%] left-1/2 transform -translate-x-1/2 text-[12px] font-medium font-jost uppercase">
+                        smartphone</h2>
+                </div>
+                <div class="single-item col-span-6">
+                    <img src="{{ asset('frontend image/cate2.jpg') }}" alt="">
+                    <h2
+                        class="bg-transparent text-black absolute bottom-[10%] left-1/2 transform -translate-x-1/2 text-[12px] font-medium font-jost uppercase">
+                        games</h2>
+                </div>
+                <div class="single-item col-span-6 relative">
+                    <img src="{{ asset('frontend image/cate1.jpg') }}" alt="">
+                    <h2
+                        class="bg-transparent text-black absolute bottom-[10%] left-1/2 transform -translate-x-1/2 text-[12px] font-medium font-jost uppercase">
+                        smartphone</h2>
+                </div>
+                <div class="single-item col-span-6">
+                    <img src="{{ asset('frontend image/cate2.jpg') }}" alt="">
+                    <h2
+                        class="bg-transparent text-black absolute bottom-[10%] left-1/2 transform -translate-x-1/2 text-[12px] font-medium font-jost uppercase">
+                        games</h2>
+                </div>
             </div>
         </div>
-    @endsection
+        {{-- *Category section end here --}}
+    </div>
+@endsection
