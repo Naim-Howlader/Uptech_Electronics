@@ -47,6 +47,7 @@ Route::get('/image', [CommonController::class, 'image'])->name('image');
 */
  Route::get('/', [CommonController::class, 'index'])->name('index');
  Route::get('/all-products', [CommonController::class, 'allProducts'])->name('allproducts');
+ Route::get('/single-category-product/{id}', [CommonController::class, 'singleCategoryProduct'])->name('singleCategoryProduct');
 
 /**
 * *-------Admin Dashboard route--------

@@ -20,13 +20,7 @@
                         </li>
                     @endforeach
 
-                    {{-- <li data-filter=".campho"
-                        class="whitespace-nowrap product-link md:px-5 md:py-2 product-link-h text-sm lg:text-base lg:font-semibold cursor-pointer  uppercase font-jost font-medium duration-150">
-                        camera &
-                        photo</li>
-                    <li data-filter=".headphone"
-                        class="whitespace-nowrap product-link md:px-5 md:py-2 product-link-h text-sm lg:text-base lg:font-semibold cursor-pointer  uppercase font-jost font-medium  duration-150">
-                        headphone</li> --}}
+
                 </ul>
             </div>
         </div>
@@ -87,13 +81,6 @@
                                         class="border border-red-500">$</span>{{ $product->price }}
                                 </h2>
                             </div>
-
-                            <!-- Modal toggle -->
-                            {{-- <button data-modal-target="defaultModal" data-modal-toggle="defaultModal"
-                                class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                type="button">
-                                Toggle modal
-                            </button> --}}
 
                             <!-- Main modal -->
                             <div id="defaultModal" tabindex="-1" aria-hidden="true"
@@ -164,14 +151,6 @@
                                             </div>
                                         </div>
                                         <!-- Modal footer -->
-                                        {{-- <div
-                                            class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                            <button data-modal-hide="defaultModal" type="button"
-                                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">I
-                                                accept</button>
-                                            <button data-modal-hide="defaultModal" type="button"
-                                                class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Decline</button>
-                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -235,30 +214,16 @@
             </div>
             <div
                 class="slider absolute top-[30%] px-5 grid grid-cols-12 space-x-5 gap-x-10 owl-carousel owl-theme category">
-                <div class="single-item col-span-6 relative">
-                    <img src="{{ asset('frontend image/cate1.jpg') }}" alt="">
-                    <h2
-                        class="bg-transparent text-black absolute bottom-[10%] left-1/2 transform -translate-x-1/2 text-[12px] font-medium font-jost uppercase">
-                        smartphone</h2>
-                </div>
-                <div class="single-item col-span-6">
-                    <img src="{{ asset('frontend image/cate2.jpg') }}" alt="">
-                    <h2
-                        class="bg-transparent text-black absolute bottom-[10%] left-1/2 transform -translate-x-1/2 text-[12px] font-medium font-jost uppercase">
-                        games</h2>
-                </div>
-                <div class="single-item col-span-6 relative">
-                    <img src="{{ asset('frontend image/cate1.jpg') }}" alt="">
-                    <h2
-                        class="bg-transparent text-black absolute bottom-[10%] left-1/2 transform -translate-x-1/2 text-[12px] font-medium font-jost uppercase">
-                        smartphone</h2>
-                </div>
-                <div class="single-item col-span-6">
-                    <img src="{{ asset('frontend image/cate2.jpg') }}" alt="">
-                    <h2
-                        class="bg-transparent text-black absolute bottom-[10%] left-1/2 transform -translate-x-1/2 text-[12px] font-medium font-jost uppercase">
-                        games</h2>
-                </div>
+                @foreach ($allCategories as $category)
+                    <div class="single-item col-span-6 relative">
+                        <a href="{{ route('singleCategoryProduct', ['id' => $category->id]) }}">
+                            <img src="{{ $category->image }}" alt="">
+                        </a>
+                        <h2
+                            class="bg-transparent text-black absolute bottom-[10%] left-1/2 transform -translate-x-1/2 text-[12px] font-medium font-jost uppercase">
+                            {{ $category->name }}</h2>
+                    </div>
+                @endforeach
             </div>
         </div>
         {{-- *Category section end here --}}

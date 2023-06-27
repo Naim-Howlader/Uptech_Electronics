@@ -75,6 +75,9 @@
                                                             Category name
                                                         </th>
                                                         <th scope="col" class="px-6 py-3 text-center">
+                                                            Category Image
+                                                        </th>
+                                                        <th scope="col" class="px-6 py-3 text-center">
                                                             Action
                                                         </th>
                                                     </tr>
@@ -103,6 +106,12 @@
                                                             </td>
                                                             <td class="px-6 py-4">
                                                                 {{ $category->name }}
+                                                            </td>
+                                                            <td class="px-6 py-4 text-center">
+                                                                <a href="{{ asset($category->image) }}" class="">
+                                                                    <img src="{{ asset($category->image) }}" alt=""
+                                                                        class="w-[100px] object-contain mx-auto">
+                                                                </a>
                                                             </td>
                                                             <td class="px-6 py-4">
                                                                 <a
