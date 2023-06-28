@@ -75,6 +75,46 @@ $('.pronav').on('click', 'li', function () {
     $grid.isotope({ filter: filterValue });
 });
 
+$('.update_cart').change(function (e) {
+    e.preventDefault();
+    var cart = $(this);
+    let id = $(this).data('id');
+    //alert(name);
+    $.ajax({
+        url: "/cart-update_cart",
+        method: 'patch',
+        data: {
+            id: cart.parents(".box").attr("data-id"),
+            quantity: cart.parents(".box").find('.quantity').val(),
+
+        },
+        success: function (response) {
+            window.location.reload();
+
+        }
+    });
+})
+
+
+$('.remove_cart').click(function (e) {
+    e.preventDefault();
+    var cart = $(this);
+    let id = $(this).data('id');
+    //alert(name);
+    $.ajax({
+        url: "/cart-remove_cart",
+        method: 'delete',
+        data: {
+            id: cart.parents(".box").attr("data-id"),
+
+        },
+        success: function (response) {
+            window.location.reload();
+
+        }
+    });
+})
+
 
 
 

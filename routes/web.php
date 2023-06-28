@@ -6,6 +6,7 @@ use App\Http\Controllers\CommonController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,3 +73,14 @@ Route::group(['prefix' => 'product', 'as' => 'product.'], function(){
     Route::post('/update-product/{id}', [ProductController::class, 'update',])->name('update');
     Route::get('/delete-product/{id}', [ProductController::class, 'delete'])->name('delete');
 });
+
+/**
+ **-------Add to cart Route------
+ */
+Route::group(['prefix' => 'cart', 'as' => 'cart.'], function(){
+    Route::get('/add-to-cart/{id}', [CartController::class, 'addToCart'])->name('add');
+    Route::get('/view-cart', [CartController::class, 'viewCart'])->name('view');
+
+});
+Route::delete('/cart-remove_cart', [CartController::class, 'removeCart'])->name('remove_cart');
+Route::patch('/cart-update_cart', [CartController::class, 'updateCart'])->name('update_cart');

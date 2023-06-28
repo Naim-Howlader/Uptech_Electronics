@@ -43,10 +43,24 @@
                 </div>
             </div>
             <div class="single-icon flex">
-                <h2 class="text-[14px] cursor-pointer">Login</h2>
+                {{-- <h2 class="text-[14px] cursor-pointer">Login</h2>
                 <span class="material-symbols-outlined text-lg cursor-pointer">
                     login
-                </span>
+                </span> --}}
+                @if (Route::has('login'))
+                    <div class="">
+                        @auth
+                            <a href="{{ url('/dashboard') }}" class="">Dashboard</a>
+                        @else
+                            <a href="{{ route('login') }}" class="">Log
+                                in</a>
+
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}" class="">Register</a>
+                            @endif
+                        @endauth
+                    </div>
+                @endif
             </div>
         </div>
     </div>
@@ -71,6 +85,7 @@
             </div>
             <div class="lg:hidden">
                 <span class="material-symbols-outlined text-3xl">
+
                     shopping_cart
                 </span>
             </div>
@@ -134,9 +149,10 @@
             </div>
 
             <div class="hidden lg:block lg:col-span-2 lg:text-right">
-                <span class="material-symbols-outlined text-3xl">
-                    shopping_cart
-                </span>
+                <a href="{{ route('cart.view') }}"> <span class="material-symbols-outlined text-3xl">
+                        shopping_cart
+                    </span></a>
+                {{ count((array) session('cart')) }}
             </div>
         </div>
     </nav>

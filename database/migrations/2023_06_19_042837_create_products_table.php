@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('mini_description');
             $table->text('description');
             $table->text('feature');
-            $table->string('price');
+            $table->integer('price');
             $table->string('image');
             $table->string('status', 20)->default('pending');
             $table->unsignedBigInteger('category_id');
