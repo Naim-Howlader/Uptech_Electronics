@@ -42,7 +42,6 @@ class CategoryController extends Controller
     public function update($id, Request $request){
         $request->validate([
             'name' => 'required',
-            'image' => 'required',
         ]);
         $categories = Category::find($id);
         $products = DB::table('products')->where('category_id', $id);

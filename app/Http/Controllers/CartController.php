@@ -12,12 +12,13 @@ class CartController extends Controller
         return view('frontend.add-to-cart');
     }
     public function addToCart($id){
-        //if(auth()->user()){
+        if(auth()->user()){
             //return "login";
         $product = Product::findOrFail($id);
         $cart = session()->get('cart');
         if(!$cart){
             $cart[$id] = [
+                'user_id' =>auth()->user()->name,
                 'name' => $product->name,
                 'image' => $product->image,
                 'price' => $product->price,
@@ -32,6 +33,7 @@ class CartController extends Controller
             return redirect()->back()->with('message', 'add to cart again');
         }
         $cart[$id] = [
+            'user_id' =>auth()->user()->name,
             'name' => $product->name,
             'image' => $product->image,
             'price' => $product->price,
@@ -39,10 +41,10 @@ class CartController extends Controller
         ];
         session()->put('cart',$cart);
             return redirect()->back()->with('message', 'new add to cart');
-        //}
-        //else{
-            //return "not login";
-        //}
+        }
+        else{
+            return redirect('login');
+        }
     }
     public function updateCart(Request $request){
         if($request->id && $request->quantity){

@@ -39,6 +39,7 @@ Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth:admin'])->name('admin.dashboard');
 
+
 require __DIR__.'/adminauth.php';
 
 Route::get('/image', [CommonController::class, 'image'])->name('image');
@@ -53,20 +54,20 @@ Route::get('/image', [CommonController::class, 'image'])->name('image');
 /**
 * *-------Admin Dashboard route--------
 */
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
+Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin'], 'as' => 'admin.'], function(){
     Route::get('/products', [AdminDashboardController::class, 'products'])->name('products');
 });
 /**
 * *-------Admin Product route--------
 */
-Route::group(['prefix' => 'category', 'as' => 'category.'], function(){
+Route::group(['prefix' => 'category', 'middleware' => ['auth:admin'], 'as' => 'category.'], function(){
     Route::get('/add-category', [CategoryController::class, 'add'])->name('add');
     Route::post('/insert-category', [CategoryController::class, 'insert'])->name('insert');
     Route::get('/edit-category/{id}', [CategoryController::class, 'edit'])->name('edit');
     Route::post('/update-category/{id}', [CategoryCOntroller::class, 'update'])->name('update');
     Route::get('/delete-category/{id}', [categoryController::class, 'delete'])->name('delete');
 });
-Route::group(['prefix' => 'product', 'as' => 'product.'], function(){
+Route::group(['prefix' => 'product', 'middleware' => ['auth:admin'], 'as' => 'product.'], function(){
     Route::get('/add-product', [ProductController::class, 'add',])->name('add');
     Route::post('/insert-product', [ProductController::class, 'insert',])->name('insert');
     Route::get('/edit-product/{id}', [ProductController::class, 'edit',])->name('edit');

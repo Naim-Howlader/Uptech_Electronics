@@ -50,9 +50,25 @@
                 @if (Route::has('login'))
                     <div class="">
                         @auth
-                            <a href="{{ url('/dashboard') }}" class="">Dashboard</a>
+                            {{-- <a href="{{ url('/dashboard') }}" class="">Dashboard</a> --}}
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <div :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                                    <div class="flex cursor-pointer space-x-1">
+                                        <div class="text-xl">
+                                            <ion-icon name="log-out-outline"></ion-icon>
+                                        </div>
+                                        <div>
+                                            <h2>Log out</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         @else
-                            <a href="{{ route('login') }}" class="">Log
+                            <a href="{{ route('login') }}" class="pr-5">Log
                                 in</a>
 
                             @if (Route::has('register'))
@@ -149,10 +165,18 @@
             </div>
 
             <div class="hidden lg:block lg:col-span-2 lg:text-right">
-                <a href="{{ route('cart.view') }}"> <span class="material-symbols-outlined text-3xl">
+
+                <a href="{{ route('cart.view') }}" class="">
+                    <span class="material-symbols-outlined text-3xl ">
                         shopping_cart
-                    </span></a>
-                {{ count((array) session('cart')) }}
+                    </span>
+                    @if (!empty(session('cart')))
+                        <span class="text-red-500  font-jost font-bold">{{ count((array) session('cart')) }}</span>
+                    @endif
+                </a>
+
+
+
             </div>
         </div>
     </nav>
