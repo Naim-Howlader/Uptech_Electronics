@@ -9,19 +9,45 @@ use App\Models\User;
 class CartController extends Controller
 {
     public function viewCart(){
-        return view('frontend.add-to-cart');
+        if(auth()->user()){
+        if(!empty(session('cart'))){
+            $cart = session('cart');
+        $data = [];
+        foreach ($cart as $item) {
+            $product = Product::find($item['id']);
+            $data []= [
+                'id' => $product->id,
+                'name' => $product->name,
+                'price' => $product->price,
+                'image' => $product->image,
+                'quantity' => $item['quantity'],
+            ];
+        }
+        $user = auth()->user();
+        $data = compact('data','user');
+
+        return view('frontend.add-to-cart')->with($data);
+        }else{
+            return redirect('/');
+        }
+        }
+        else{
+            return redirect('login');
+        }
+
     }
     public function addToCart($id){
-        if(auth()->user()){
+         if(auth()->user()){
             //return "login";
         $product = Product::findOrFail($id);
         $cart = session()->get('cart');
         if(!$cart){
             $cart[$id] = [
-                'user_id' =>auth()->user()->name,
-                'name' => $product->name,
-                'image' => $product->image,
-                'price' => $product->price,
+                // 'user_id' =>auth()->user()->name,
+                // 'name' => $product->name,
+                // 'image' => $product->image,
+                // 'price' => $product->price,
+                'id' => $product->id,
                 'quantity' => 1,
             ];
             session()->put('cart',$cart);
@@ -33,18 +59,15 @@ class CartController extends Controller
             return redirect()->back()->with('message', 'add to cart again');
         }
         $cart[$id] = [
-            'user_id' =>auth()->user()->name,
-            'name' => $product->name,
-            'image' => $product->image,
-            'price' => $product->price,
+            'id' => $product->id,
             'quantity' => 1,
         ];
         session()->put('cart',$cart);
             return redirect()->back()->with('message', 'new add to cart');
         }
-        else{
-            return redirect('login');
-        }
+         else{
+             return redirect('login');
+         }
     }
     public function updateCart(Request $request){
         if($request->id && $request->quantity){

@@ -85,3 +85,5 @@ Route::group(['prefix' => 'cart', 'as' => 'cart.'], function(){
 });
 Route::delete('/cart-remove_cart', [CartController::class, 'removeCart'])->name('remove_cart');
 Route::patch('/cart-update_cart', [CartController::class, 'updateCart'])->name('update_cart');
+
+

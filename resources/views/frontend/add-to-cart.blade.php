@@ -6,10 +6,10 @@
     </style>
     <style>
         /*
-                                                                                                                                                                                                                                                                                                                                                                                            module.exports = {
-                                                                                                                                                                                                                                                                                                                                                                                                plugins: [require('@tailwindcss/forms'),]
-                                                                                                                                                                                                                                                                                                                                                                                            };
-                                                                                                                                                                                                                                                                                                                                                                                            */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                module.exports = {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    plugins: [require('@tailwindcss/forms'),]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                };
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
         .form-radio {
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -111,47 +111,46 @@
                             @php
                                 $total = 0;
                             @endphp
-                            @if (session('cart'))
-                                @foreach (session('cart') as $id => $product)
-                                    @php
 
-                                        $total += $product['price'] * $product['quantity'];
-                                    @endphp
-                                    <div class="box" data-id={{ $id }}>
-                                        <div class="w-full flex items-center mt-2">
-                                            <div
-                                                class="overflow-hidden rounded-lg w-16 h-16 bg-gray-50 border border-gray-200">
-                                                <img src="{{ asset($product['image']) }}" alt="">
+                            @foreach ($data as $product)
+                                @php
+                                    
+                                    $total += $product['price'] * $product['quantity'];
+                                @endphp
+                                <div class="box" data-id={{ $product['id'] }}>
+                                    <div class="w-full flex items-center mt-2">
+                                        <div class="overflow-hidden rounded-lg w-16 h-16 bg-gray-50 border border-gray-200">
+                                            <img src="{{ asset($product['image']) }}" alt="">
+                                        </div>
+
+                                        <div class="flex-grow pl-3">
+                                            <h6 class="font-semibold uppercase text-gray-600">{{ $product['name'] }}
+                                            </h6>
+                                            <p class="text-gray-400">{{ $product['price'] }} x
+                                                {{ $product['quantity'] }}
+                                            </p>
+                                        </div>
+
+
+                                        <div class="flex space-x-10">
+                                            <div data-th="quantity">
+                                                <input type="number" class="update_cart quantity"
+                                                    value="{{ $product['quantity'] }}" min="1" max="5">
                                             </div>
-
-                                            <div class="flex-grow pl-3">
-                                                <h6 class="font-semibold uppercase text-gray-600">{{ $product['name'] }}
-                                                </h6>
-                                                <p class="text-gray-400">{{ $product['price'] }} x
-                                                    {{ $product['quantity'] }}
-                                                </p>
+                                            <div>
+                                                <span
+                                                    class="font-semibold text-gray-600 text-xl">{{ $product['price'] * $product['quantity'] }}</span>
                                             </div>
+                                            <div>
+                                                <button type="button" data-item="{{ $product['name'] }}"
+                                                    class="remove_cart focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete</button>
 
-
-                                            <div class="flex space-x-10">
-                                                <div data-th="quantity">
-                                                    <input type="number" class="update_cart quantity"
-                                                        value="{{ $product['quantity'] }}" min="1" max="5">
-                                                </div>
-                                                <div>
-                                                    <span
-                                                        class="font-semibold text-gray-600 text-xl">{{ $product['price'] * $product['quantity'] }}</span>
-                                                </div>
-                                                <div>
-                                                    <button type="button" data-item="{{ $product['name'] }}"
-                                                        class="remove_cart focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete</button>
-
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                @endforeach
-                            @endif
+                                </div>
+                            @endforeach
+
                         </div>
                         <div class="mb-6 pb-6 border-b border-gray-200">
                             <div class="-mx-2 flex items-end justify-end">
@@ -228,27 +227,73 @@
                                             id="type1" checked>
                                         <img src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png"
                                             class="h-6 ml-3">
-                                    </label>
+                                    </label>`
                                 </div>
                                 <div>
                                     <div class="mb-3">
-                                        <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">Name on card</label>
+                                        <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">Name</label>
                                         <div>
                                             <input
                                                 class="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
-                                                placeholder="John Smith" type="text" value="" />
+                                                type="text" value="{{ $user->name }}" />
                                         </div>
-
-
-
-
                                     </div>
                                     <div class="mb-3">
-                                        <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">Card number</label>
+                                        <div class="grid grid-cols-12 space-x-3">
+                                            <div class="col-span-6">
+                                                <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">Email</label>
+                                                <input
+                                                    class="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
+                                                    type="text" value="{{ $user->email }}" />
+                                            </div>
+                                            <div class="col-span-6">
+                                                <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">Mobile</label>
+                                                <input
+                                                    class="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
+                                                    type="text" value="{{ $user->mobile }}" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">Street Address</label>
                                         <div>
                                             <input
                                                 class="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
-                                                placeholder="0000 0000 0000 0000" type="text" />
+                                                type="text" value="{{ $user->street }}" />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="grid grid-cols-12 space-x-3">
+                                            <div class="col-span-6">
+                                                <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">City</label>
+                                                <input
+                                                    class="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
+                                                    type="text" value="{{ $user->city }}" />
+                                            </div>
+                                            <div class="col-span-6">
+                                                <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">Region</label>
+                                                <input
+                                                    class="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
+                                                    type="text" value="{{ $user->region }}" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="grid grid-cols-12 space-x-3">
+                                            <div class="col-span-6">
+                                                <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">Zip
+                                                    code</label>
+                                                <input
+                                                    class="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
+                                                    type="text" value="{{ $user->zip }}" />
+                                            </div>
+                                            <div class="col-span-6">
+                                                <label
+                                                    class="text-gray-600 font-semibold text-sm mb-2 ml-1">Country</label>
+                                                <input
+                                                    class="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
+                                                    type="text" value="{{ $user->country }}" />
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="mb-3 -mx-2 flex items-end">
