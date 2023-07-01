@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,6 +82,10 @@ Route::group(['prefix' => 'product', 'middleware' => ['auth:admin'], 'as' => 'pr
 Route::group(['prefix' => 'cart', 'as' => 'cart.'], function(){
     Route::get('/add-to-cart/{id}', [CartController::class, 'addToCart'])->name('add');
     Route::get('/view-cart', [CartController::class, 'viewCart'])->name('view');
+    Route::post('/place-order',[OrderController::class, 'placeOrder'])->name('place-order');
+    Route::get('/confirm-order', function(){
+        return view('frontend.order-place');
+    });
 
 });
 Route::delete('/cart-remove_cart', [CartController::class, 'removeCart'])->name('remove_cart');
