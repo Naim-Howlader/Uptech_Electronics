@@ -1,7 +1,6 @@
 
 $('.topbar').owlCarousel({
     loop: true,
-
     nav: true,
     dots: false,
     margin: 10,
@@ -37,6 +36,23 @@ $('.category').owlCarousel({
         }
     }
 })
+$('.blogs').owlCarousel({
+    loop: true,
+    margin: 10,
+    nav: true,
+    responsive: {
+        0: {
+            items: 1
+        },
+        600: {
+            items: 3
+        },
+        1000: {
+            items: 5
+        }
+    }
+})
+
 
 
 let activelink = document.querySelectorAll('.product-link');

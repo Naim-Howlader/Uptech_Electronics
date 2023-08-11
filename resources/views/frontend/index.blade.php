@@ -259,6 +259,43 @@
             </div>
         </div>
         {{-- *Category section end here --}}
+
+        {{-- *Blog section start here --}}
+        <div class="blog-section font-jost">
+            <div class="blog-heading text-center text-xl font-semibold uppercase pb-5 mt-14">
+                <h2>our blog</h2>
+                <div class="flex justify-center items-center space-x-1 mt-2">
+                    <div class="w-1 h-3 bg-red-700"></div>
+                    <div class="w-1 h-5 bg-red-700"></div>
+                    <div class="w-1 h-3 bg-red-700"></div>
+                    <div class="w-1 h-5 bg-red-700"></div>
+                    <div class="w-1 h-3 bg-red-700"></div>
+                </div>
+            </div>
+            <div class="blog-item mb-10  owl-carousel  blogs bg-white">
+                <div class="blog-single-item px-5 pb-8 bg-white">
+                    <img src="{{ asset('frontend image/blog-4.jpg') }}" alt="" srcset="">
+                    <div class="blog-content flex gap-x-5 pt-3 pb-33">
+                        <div class="person-icon flex text-black">
+                            <span class="material-symbols-outlined">
+                                person
+                            </span>
+                            <h2>Admin</h2>
+                        </div>
+                        <div class="date flex text-black">
+                            <span class="material-symbols-outlined">
+                                schedule
+                            </span>
+                            <h2 class="text-black">May 10, 2023</h2>
+                        </div>
+                    </div>
+                    <div class="blog-title pt-5 text-black">
+                        <h2 class="text-xl font-medium">Sample post with formal chat</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- *Blog section end here --}}
     </div>
     <script src="{{ asset('js/same-page-script.js') }}"></script>
 @endsection
