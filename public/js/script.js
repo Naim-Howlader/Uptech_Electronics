@@ -36,22 +36,25 @@ $('.category').owlCarousel({
         }
     }
 })
-$('.blogs').owlCarousel({
+$('.owl-carousel').owlCarousel({
     loop: true,
     margin: 10,
+    dots: false,
     nav: true,
+    navText: ['<div class="flex"><span class="material-symbols-outlined navicon border text-white p-2">arrow_back_ios</span ></div>', '<span class="material-symbols-outlined navicon-r border text-white p-2">arrow_forward_ios</span>'],
     responsive: {
         0: {
             items: 1
         },
-        600: {
-            items: 3
+        640: {
+            items: 2
         },
-        1000: {
-            items: 5
+        768: {
+            items: 3
         }
     }
-})
+});
+
 
 
 

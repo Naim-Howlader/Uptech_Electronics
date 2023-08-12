@@ -14,4 +14,7 @@ class AdminDashboardController extends Controller
         $data = compact('categories','products');
         return view('admin.products')->with($data);
     }
+    public function blogs(){
+        return view('admin.blogs');
+    }
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\BlogCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,9 +58,10 @@ Route::get('/image', [CommonController::class, 'image'])->name('image');
 */
 Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin'], 'as' => 'admin.'], function(){
     Route::get('/products', [AdminDashboardController::class, 'products'])->name('products');
+    Route::get('/blogs', [AdminDashboardController::class, 'blogs'])->name('blogs');
 });
 /**
-* *-------Admin Product route--------
+* *-------Admin Products Route--------
 */
 Route::group(['prefix' => 'category', 'middleware' => ['auth:admin'], 'as' => 'category.'], function(){
     Route::get('/add-category', [CategoryController::class, 'add'])->name('add');
@@ -74,6 +76,13 @@ Route::group(['prefix' => 'product', 'middleware' => ['auth:admin'], 'as' => 'pr
     Route::get('/edit-product/{id}', [ProductController::class, 'edit',])->name('edit');
     Route::post('/update-product/{id}', [ProductController::class, 'update',])->name('update');
     Route::get('/delete-product/{id}', [ProductController::class, 'delete'])->name('delete');
+});
+
+/**
+ * *----------Admin Blogs Route---------
+ */
+Route::group(['prefix'=> 'blogs_category','middleware' => ['auth:admin'], 'as' => 'blog_category.'], function(){
+    Route::get('/add-category', [BlogCategoryController::class, 'add'])->name('add');
 });
 
 /**
