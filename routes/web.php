@@ -9,6 +9,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\BlogCategoryController;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,6 +88,10 @@ Route::group(['prefix'=> 'blogs_category','middleware' => ['auth:admin'], 'as' =
     Route::get('/edit-category/{id}', [BlogCategoryController::class, 'edit'])->name('edit');
     Route::post('/update-category/{id}', [BlogCategoryController::class, 'update'])->name('update');
     Route::get('/delete-category/{id}', [BlogCategoryController::class, 'delete'])->name('delete');
+});
+Route::group(['prefix' => 'blog', 'middleware' => ['auth:admin'], 'as' => 'blog.'], function(){
+    Route::get('/add-blog', [BlogController::class, 'add'])->name('add');
+    Route::post('/insert-blog', [BlogController::class, 'insert'])->name('insert');
 });
 
 /**

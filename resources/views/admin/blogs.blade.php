@@ -104,12 +104,116 @@
                                                                 </a>
                                                                 <a
                                                                     href="{{route('blog_category.delete', ['id' => $blog_category->id])}}">
-                                                                    <button type="button"
+                                                                    <button type="button" onclick="return confirm('Do you want to delete ?')"
                                                                         class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete</button>
                                                                 </a>
                                                             </td>
                                                         </tr>
                                                         @endforeach
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        {{-- *Blog table --}}
+        <div class="px-6 py-6 w-full mx-auto ">
+            <div class="flex flex-wrap -mx-3">
+                <div class="flex-none w-full max-w-full px-3">
+                    <div
+                        class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
+                        <div
+                            class="p-6 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent flex items-center justify-between">
+                            <h6 class="dark:text-white text-xl font-medium">Blog table</h6>
+                            <div class="">
+                                <a href="{{route('blog.add')}}">
+                                    <button type="button"
+                                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add
+                                        Blog</button>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="flex-auto px-0 pt-0 pb-2">
+                            <div class="p-0 overflow-x-auto">
+                                <div class="relative overflow-hidden">
+                                    <div class="relative  shadow-md sm:rounded-lg px-2">
+                                        <div>
+                                            <div class="relative overflow-x-auto">
+                                                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                                    <thead
+                                                        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                                        <tr>
+                                                            <th scope="col" class="px-6 py-3">
+                                                                #SL
+                                                            </th>
+                                                            <th scope="col" class="px-6 py-3">
+                                                                Status
+                                                            </th>
+                                                            <th scope="col" class="px-6 py-3">
+                                                                Title
+                                                            </th>
+                                                            <th scope="col" class="px-6 py-3">
+                                                                Category
+                                                            </th>
+                                                            <th scope="col" class="px-6 py-3">
+                                                                Description
+                                                            </th>
+                                                            <th scope="col" class="px-6 py-3">
+                                                                Image
+                                                            </th>
+                                                            <th scope="col" class="px-6 py-3">
+                                                                Action
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @php
+                                                            $sl = 1;
+                                                        @endphp
+                                                        @foreach ($blogs as $blog)
+                                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                            <td class="px-6 py-4">
+                                                                {{$sl++}}
+                                                            </td>
+                                                            <td class="px-6 py-4">
+                                                                Pending
+                                                            </td>
+                                                            <td class="px-6 py-4">
+                                                                {{$blog->name}}
+                                                            </td>
+                                                            <td class="px-6 py-4">
+                                                                {{$blog->categories->name}}
+                                                            </td>
+                                                            <td class="px-6 py-4">
+                                                                {{$blog->description}}
+                                                            </td>
+                                                            <td class="px-6 py-4">
+                                                                <img src="{{asset($blog->image)}}" alt="" srcset="" class="w-[100px] object-contain mx-auto">
+                                                            </td>
+                                                            <td class="px-6 py-4">
+                                                                <a
+                                                                    href="">
+                                                                    <button type="button"
+                                                                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Edit</button>
+                                                                </a>
+                                                                <a
+                                                                    href="">
+                                                                    <button type="button" onclick="return confirm('Do you want to delete ?')"
+                                                                        class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete</button>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        @endforeach
+
 
                                                     </tbody>
                                                 </table>

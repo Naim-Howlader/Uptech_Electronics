@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\BlogCategory;
 use App\Models\Product;
+use App\Models\Blog;
 
 class AdminDashboardController extends Controller
 {
@@ -17,7 +18,8 @@ class AdminDashboardController extends Controller
     }
     public function blogs(){
         $blog_categories = BlogCategory::latest()->get();
-        $data = compact('blog_categories');
+        $blogs = Blog::latest()->with('categories')->get();
+        $data = compact('blog_categories','blogs');
         return view('admin.blogs')->with($data);
     }
 }
