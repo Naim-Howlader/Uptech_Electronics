@@ -83,6 +83,10 @@ Route::group(['prefix' => 'product', 'middleware' => ['auth:admin'], 'as' => 'pr
  */
 Route::group(['prefix'=> 'blogs_category','middleware' => ['auth:admin'], 'as' => 'blog_category.'], function(){
     Route::get('/add-category', [BlogCategoryController::class, 'add'])->name('add');
+    Route::post('/insert-category', [BlogCategoryController::class, 'insert'])->name('insert');
+    Route::get('/edit-category/{id}', [BlogCategoryController::class, 'edit'])->name('edit');
+    Route::post('/update-category/{id}', [BlogCategoryController::class, 'update'])->name('update');
+    Route::get('/delete-category/{id}', [BlogCategoryController::class, 'delete'])->name('delete');
 });
 
 /**

@@ -81,7 +81,7 @@ $(document).on('click', '.view-btn', function () {
     document.getElementById("description").innerHTML = description;
     document.getElementById("category").innerHTML = category;
     document.getElementById("price").innerHTML = '$' + price;
-    document.getElementById("image").src = url + '/' + image;
+    document.getElementById("image").src = full;
 });
 
 // init Isotope
