@@ -5,14 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Blog;
+use App\Models\BlogCategory;
 
 class CommonController extends Controller
 {
     public function index(){
         $categories = Category::with('products')->where('status', 'active')->latest()->take(3)->get();
         $allCategories = Category::with('products')->where('status', 'active')->latest()->get();
+        $blogs = Blog::with('categories')->where('status', 'active')->latest()->take(4)->get();
         $url = env('APP_URL');
-        $data = compact('categories', 'url', 'allCategories');
+        $data = compact('categories', 'url', 'allCategories','blogs');
         return view('frontend.index')->with($data);
     }
     public function allProducts(){

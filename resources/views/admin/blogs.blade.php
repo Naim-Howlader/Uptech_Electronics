@@ -57,23 +57,23 @@
                                     <div class="relative  shadow-md sm:rounded-lg px-2">
                                         <div>
                                             <div class="relative overflow-x-auto">
-                                                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 overflow-hidden">
                                                     <thead
                                                         class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                                         <tr>
-                                                            <th scope="col" class="px-6 py-3">
+                                                            <th scope="col" class="px-6 py-3 text-center">
                                                                 #SL
                                                             </th>
-                                                            <th scope="col" class="px-6 py-3">
+                                                            <th scope="col" class="px-6 py-3 text-center">
                                                                 Status
                                                             </th>
-                                                            <th scope="col" class="px-6 py-3">
+                                                            <th scope="col" class="px-6 py-3 text-center">
                                                                 Category Name
                                                             </th>
-                                                            <th scope="col" class="px-6 py-3">
+                                                            <th scope="col" class="px-6 py-3 text-center">
                                                                 Category Image
                                                             </th>
-                                                            <th scope="col" class="px-6 py-3">
+                                                            <th scope="col" class="px-6 py-3 text-center">
                                                                 Action
                                                             </th>
                                                         </tr>
@@ -84,19 +84,28 @@
                                                         @endphp
                                                         @foreach ($blog_categories as $blog_category)
                                                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                            <td class="px-6 py-4">
+                                                            <td class="px-6 py-4 text-center">
                                                                 {{$sl++}}
                                                             </td>
-                                                            <td class="px-6 py-4">
-                                                                Silver
+                                                            <td class="px-6 py-4 text-center">
+                                                                @if ($blog_category->status == 'active')
+                                                                <span
+                                                            class="bg-green-100 text-green-800 text-base capitalize font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">{{ $blog_category->status }}</span>
+                                                                @elseif($blog_category->status == 'inactive')
+                                                                <span
+                                                            class="bg-red-100 text-red-800 text-base capitalize font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">{{ $blog_category->status }}</span>
+                                                                @else
+                                                                <span
+                                                                class="bg-yellow-100 text-yellow-800 text-base capitalize font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">{{ $blog_category->status }}</span>
+                                                                @endif
                                                             </td>
-                                                            <td class="px-6 py-4">
+                                                            <td class="px-6 py-4 text-center">
                                                                 {{$blog_category->name}}
                                                             </td>
-                                                            <td class="px-6 py-4">
+                                                            <td class="px-6 py-4 text-center">
                                                                 <img src="{{asset($blog_category->image)}}" alt="" srcset="" class="w-[100px] object-contain mx-auto">
                                                             </td>
-                                                            <td class="px-6 py-4">
+                                                            <td class="px-6 py-4 text-center">
                                                                 <a
                                                                     href="{{route('blog_category.edit', ['id'=> $blog_category->id])}}">
                                                                     <button type="button"
@@ -152,25 +161,25 @@
                                                     <thead
                                                         class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                                         <tr>
-                                                            <th scope="col" class="px-6 py-3">
+                                                            <th scope="col" class="px-6 py-3 text-center">
                                                                 #SL
                                                             </th>
-                                                            <th scope="col" class="px-6 py-3">
+                                                            <th scope="col" class="px-6 py-3 text-center">
                                                                 Status
                                                             </th>
-                                                            <th scope="col" class="px-6 py-3">
+                                                            <th scope="col" class="px-6 py-3 text-center">
                                                                 Title
                                                             </th>
-                                                            <th scope="col" class="px-6 py-3">
+                                                            <th scope="col" class="px-6 py-3 text-center">
                                                                 Category
                                                             </th>
-                                                            <th scope="col" class="px-6 py-3">
-                                                                Description
-                                                            </th>
-                                                            <th scope="col" class="px-6 py-3">
+                                                            <th scope="col" class="px-6 py-3 text-center">
                                                                 Image
                                                             </th>
-                                                            <th scope="col" class="px-6 py-3">
+                                                            <th scope="col" class="px-6 py-3 text-center">
+                                                                Description
+                                                            </th>
+                                                            <th scope="col" class="px-6 py-3 text-center">
                                                                 Action
                                                             </th>
                                                         </tr>
@@ -181,32 +190,44 @@
                                                         @endphp
                                                         @foreach ($blogs as $blog)
                                                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                            <td class="px-6 py-4">
+                                                            <td class="px-6 py-4 text-center">
                                                                 {{$sl++}}
                                                             </td>
-                                                            <td class="px-6 py-4">
-                                                                Pending
+                                                            <td class="px-6 py-4 text-center">
+                                                                @if ($blog->status == 'active')
+                                                                <span
+                                                            class="bg-green-100 text-green-800 text-base capitalize font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">{{ $blog->status }}</span>
+                                                            @elseif($blog->status == 'inactive')
+                                                            <span
+                                                            class="bg-red-100 text-red-800 text-base capitalize font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">{{ $blog->status }}</span>
+                                                            @else
+                                                            <span
+                                                            class="bg-yellow-100 text-yellow-800 text-base capitalize font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">{{ $blog->status }}</span>
+                                                                @endif
                                                             </td>
-                                                            <td class="px-6 py-4">
+                                                            <td class="px-6 py-4 text-center">
                                                                 {{$blog->name}}
                                                             </td>
-                                                            <td class="px-6 py-4">
+                                                            <td class="px-6 py-4 text-center">
                                                                 {{$blog->categories->name}}
                                                             </td>
-                                                            <td class="px-6 py-4">
-                                                                {{$blog->description}}
-                                                            </td>
-                                                            <td class="px-6 py-4">
+
+                                                            <td class="px-6 py-4 text-center">
                                                                 <img src="{{asset($blog->image)}}" alt="" srcset="" class="w-[100px] object-contain mx-auto">
                                                             </td>
-                                                            <td class="px-6 py-4">
+                                                            <td class="px-6 py-4 flex">
+                                                                <div class="min-w-[600px]">
+                                                                    {!!$blog->description!!}
+                                                                </div>
+                                                            </td>
+                                                            <td class="px-6 py-4 text-center">
                                                                 <a
-                                                                    href="">
+                                                                    href="{{route('blog.edit', ['id' => $blog->id])}}">
                                                                     <button type="button"
                                                                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Edit</button>
                                                                 </a>
                                                                 <a
-                                                                    href="">
+                                                                    href="{{route('blog.delete', ['id' => $blog->id])}}">
                                                                     <button type="button" onclick="return confirm('Do you want to delete ?')"
                                                                         class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete</button>
                                                                 </a>
@@ -227,6 +248,17 @@
                 </div>
             </div>
         </div>
-
+        @push('datatable')
+            <script>
+                $(function() {
+                    $('table').DataTable({
+                            // autoWidth: true
+                            responsive: true,
+                        })
+                        .columns.adjust()
+                        .responsive.recalc();
+                })
+            </script>
+        @endpush
     </main>
 @endsection

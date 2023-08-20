@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Models\BlogCategory;
+use Illuminate\Support\Facades\File;
 
 class BlogController extends Controller
 {
@@ -27,11 +28,62 @@ class BlogController extends Controller
 
         $blog = new Blog();
         $blog->name = $request['name'];
-        $blog->description = $request['description'];
+        $blog->description = nl2br($request['description']);
         $blog->category_id = $request['category'];
         $blog->image = $destination.$image;
+        if($request->status == 'on'){
+            $blog->status = 'active';
+        }
         $blog->save();
         session()->flash('success', 'Blog added successfully');
+        return redirect()->route('admin.blogs');
+    }
+    public function edit($id){
+        $blog = Blog::find($id);
+        if(empty($blog)){
+            return redirect()->route('admin.blogs');
+        }
+        $categories = BlogCategory::get();
+        $url = route('blog.update', ['id' => $id]);
+        $data  = compact('categories', 'url', 'blog');
+        return view('admin.blogs.update-blog')->with($data);
+    }
+    public function update(Request $request, $id){
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'category' => 'required',
+        ]);
+        $blog = Blog::find($id);
+        $blog->name = $request['name'];
+        $blog->description = nl2br($request['description']);
+        $blog->category_id = $request['category'];
+        if($request->hasFile('image')){
+            $destination = 'uploads/images/'.$blog->image;
+            if(File::exists($destination)){
+                File::delete($destination);
+            }
+            $image = $request->file('image')->getClientOriginalName();
+            $destination = 'uploads/images/';
+            $request->image->move(public_path($destination), $image);
+            $blog->image  = $destination.$image;
+        }
+        if($request->status == 'on'){
+            $blog->status = 'active';
+        }else{
+            $blog->status = 'inactive';
+        }
+        $blog->update();
+        session()->flash('success', 'Blog updated successfully');
+        return redirect()->route('admin.blogs');
+    }
+    public function delete($id){
+        $blog = Blog::find($id);
+        if(empty($blog)){
+            return redirect()->route('admin.blogs');
+        }
+        $blog->delete();
+        session()->flash('success', 'Blog deleted successfully');
         return redirect()->route('admin.blogs');
     }
 }

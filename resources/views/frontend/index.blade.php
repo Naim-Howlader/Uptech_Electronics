@@ -274,9 +274,10 @@
             </div>
         </div>
         <div class="owl-carousel owl-theme pb-14 sm:pb-24 lg:pb-36">
+            @foreach ($blogs as $blog)
             <div class="item">
                 <div class="text-black bg-white">
-                    <img src="{{ asset('frontend image/blog-1.jpg') }}" alt="" srcset="">
+                    <img src="{{ asset($blog->image) }}" alt="" srcset="">
                     <div class="blog-content flex gap-x-5 pt-3 pb-33">
                         <div class="person-icon flex text-black">
                             <span class="material-symbols-outlined">
@@ -288,124 +289,21 @@
                             <span class="material-symbols-outlined">
                                 schedule
                             </span>
-                            <h2 class="text-black">May 10, 2023</h2>
+                            <h2 class="text-black">{{
+                                date("d M , Y");
+                            }}</h2>
                         </div>
                     </div>
                     <div class="blog-title pt-5 text-black">
-                        <h2 class="text-xl font-medium">Sample post with formal chat</h2>
+                        <h2 class="text-xl font-medium">{{$blog->name}}</h2>
+                    </div>
+                    <div class="blog-category pt-3 text-sm">
+                        <p>{{$blog->categories->name}}</p>
                     </div>
                 </div>
             </div>
-            <div class="item">
-                <div class="bg-white">
-                    <img src="{{ asset('frontend image/blog-2.jpg') }}" alt="" srcset="">
-                    <div class="blog-content flex gap-x-5 pt-3 pb-33">
-                        <div class="person-icon flex text-black">
-                            <span class="material-symbols-outlined">
-                                person
-                            </span>
-                            <h2>Admin</h2>
-                        </div>
-                        <div class="date flex text-black">
-                            <span class="material-symbols-outlined">
-                                schedule
-                            </span>
-                            <h2 class="text-black">May 10, 2023</h2>
-                        </div>
-                    </div>
-                    <div class="blog-title pt-5 text-black">
-                        <h2 class="text-xl font-medium">Sample post with formal chat</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="bg-white">
-                    <img src="{{ asset('frontend image/blog-3.jpg') }}" alt="" srcset="">
-                    <div class="blog-content flex gap-x-5 pt-3 pb-33">
-                        <div class="person-icon flex text-black">
-                            <span class="material-symbols-outlined">
-                                person
-                            </span>
-                            <h2>Admin</h2>
-                        </div>
-                        <div class="date flex text-black">
-                            <span class="material-symbols-outlined">
-                                schedule
-                            </span>
-                            <h2 class="text-black">May 10, 2023</h2>
-                        </div>
-                    </div>
-                    <div class="blog-title pt-5 text-black">
-                        <h2 class="text-xl font-medium">Sample post with formal chat</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="bg-white">
-                    <img src="{{ asset('frontend image/blog-4.jpg') }}" alt="" srcset="">
-                    <div class="blog-content flex gap-x-5 pt-3 pb-33">
-                        <div class="person-icon flex text-black">
-                            <span class="material-symbols-outlined">
-                                person
-                            </span>
-                            <h2>Admin</h2>
-                        </div>
-                        <div class="date flex text-black">
-                            <span class="material-symbols-outlined">
-                                schedule
-                            </span>
-                            <h2 class="text-black">May 10, 2023</h2>
-                        </div>
-                    </div>
-                    <div class="blog-title pt-5 text-black">
-                        <h2 class="text-xl font-medium">Sample post with formal chat</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="bg-white">
-                    <img src="{{ asset('frontend image/blog-5.jpg') }}" alt="" srcset="">
-                    <div class="blog-content flex gap-x-5 pt-3 pb-33">
-                        <div class="person-icon flex text-black">
-                            <span class="material-symbols-outlined">
-                                person
-                            </span>
-                            <h2>Admin</h2>
-                        </div>
-                        <div class="date flex text-black">
-                            <span class="material-symbols-outlined">
-                                schedule
-                            </span>
-                            <h2 class="text-black">May 10, 2023</h2>
-                        </div>
-                    </div>
-                    <div class="blog-title pt-5 text-black">
-                        <h2 class="text-xl font-medium">Sample post with formal chat</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="bg-white">
-                    <img src="{{ asset('frontend image/blog-6.jpg') }}" alt="" srcset="">
-                    <div class="blog-content flex gap-x-5 pt-3 pb-33">
-                        <div class="person-icon flex text-black">
-                            <span class="material-symbols-outlined">
-                                person
-                            </span>
-                            <h2>Admin</h2>
-                        </div>
-                        <div class="date flex text-black">
-                            <span class="material-symbols-outlined">
-                                schedule
-                            </span>
-                            <h2 class="text-black">May 10, 2023</h2>
-                        </div>
-                    </div>
-                    <div class="blog-title pt-5 text-black">
-                        <h2 class="text-xl font-medium">Sample post with formal chat</h2>
-                    </div>
-                </div>
-            </div>
+            @endforeach
+
 
         </div>
         {{-- *Blog section end here --}}

@@ -92,6 +92,9 @@ Route::group(['prefix'=> 'blogs_category','middleware' => ['auth:admin'], 'as' =
 Route::group(['prefix' => 'blog', 'middleware' => ['auth:admin'], 'as' => 'blog.'], function(){
     Route::get('/add-blog', [BlogController::class, 'add'])->name('add');
     Route::post('/insert-blog', [BlogController::class, 'insert'])->name('insert');
+    Route::get('/edit-blog/{id}', [BlogController::class, 'edit'])->name('edit');
+    Route::post('/update-blog/{id}', [BlogController::class, 'update'])->name('update');
+    Route::get('/delete-blog/{id}', [BlogController::class, 'delete'])->name('delete');
 });
 
 /**

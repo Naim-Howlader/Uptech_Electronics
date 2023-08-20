@@ -23,6 +23,9 @@ class BlogCategoryController extends Controller
         $blog_categories = new BlogCategory();
         $blog_categories->name = $request['name'];
         $blog_categories->image = $destination.$image;
+        if($request->status == 'on'){
+            $blog_categories->status = 'active';
+        }
         $blog_categories->save();
         session()->flash('success', 'Blog Category added successfully');
         return redirect()->route('admin.blogs');
@@ -55,7 +58,14 @@ class BlogCategoryController extends Controller
         $blog_categories->image = $destination.$image;
         }
 
-        $blog_categories->save();
+        if($request->status == 'on'){
+            $blog_categories->status = 'active';
+        }
+        else{
+            $blog_categories->status = 'inactive';
+        }
+
+        $blog_categories->update();
         session()->flash('success', 'Blog Category updated successfully');
         return redirect()->route('admin.blogs');
     }
