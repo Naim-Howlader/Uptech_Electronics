@@ -277,7 +277,9 @@
             @foreach ($blogs as $blog)
             <div class="item">
                 <div class="text-black bg-white">
-                    <img src="{{ asset($blog->image) }}" alt="" srcset="">
+                    <a href="{{route('singleblog', ['id' => $blog->id])}}">
+                        <img src="{{ asset($blog->image) }}" alt="" srcset="">
+                    </a>
                     <div class="blog-content flex gap-x-5 pt-3 pb-33">
                         <div class="person-icon flex text-black">
                             <span class="material-symbols-outlined">
@@ -290,12 +292,14 @@
                                 schedule
                             </span>
                             <h2 class="text-black">{{
-                                date("d M , Y");
+                                date("d M , Y", strtotime($blog->created_at));
                             }}</h2>
                         </div>
                     </div>
                     <div class="blog-title pt-5 text-black">
-                        <h2 class="text-xl font-medium">{{$blog->name}}</h2>
+                        <a href="{{route('singleblog', ['id' => $blog->id])}}">
+                            <h2 class="text-xl font-medium">{{$blog->name}}</h2>
+                        </a>
                     </div>
                     <div class="blog-category pt-3 text-sm">
                         <p>{{$blog->categories->name}}</p>

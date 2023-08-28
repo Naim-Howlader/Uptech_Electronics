@@ -34,4 +34,15 @@ class CommonController extends Controller
         $data = compact('categories','url');
         return view('frontend.single-category-product')->with($data);
     }
+    public function singleBlog($id){
+        $blogs = Blog::with('categories')->find($id);
+        $allBlogs = Blog::where('status', 'active')->latest()->take(5)->get();
+        $data = compact('blogs','allBlogs');
+        return view('frontend.single-blog')->with($data);
+    }
+    public function allBlogs(){
+        $blogs = Blog::with('categories')->where('status', 'active')->latest()->get();
+        $data = compact('blogs');
+        return view('frontend.blog')->with($data);
+    }
 }
