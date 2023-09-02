@@ -114,7 +114,7 @@
 
                             @foreach ($data as $product)
                                 @php
-                                    
+
                                     $total += $product['price'] * $product['quantity'];
                                 @endphp
                                 <div class="box" data-id={{ $product['id'] }}>

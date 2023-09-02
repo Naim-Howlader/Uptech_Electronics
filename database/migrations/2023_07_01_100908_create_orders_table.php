@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('zip')->nullable();
             $table->string('country')->nullable();
             $table->string('date')->nullable();
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

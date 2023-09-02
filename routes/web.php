@@ -10,6 +10,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\OrderUpdate;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +27,13 @@ use App\Http\Controllers\BlogController;
 //  Route::get('/', function () {
 //      return view('welcome');
 //  });
+
+/**
+ * *Testing Route
+ */
+Route::get('/test', function(){
+    return view('frontend.invoice');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -62,6 +71,8 @@ Route::get('/image', [CommonController::class, 'image'])->name('image');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin'], 'as' => 'admin.'], function(){
     Route::get('/products', [AdminDashboardController::class, 'products'])->name('products');
     Route::get('/blogs', [AdminDashboardController::class, 'blogs'])->name('blogs');
+    Route::get('/orders', [AdminDashboardController::class, 'orders'])->name('orders');
+
 });
 /**
 * *-------Admin Products Route--------
@@ -113,5 +124,24 @@ Route::group(['prefix' => 'cart', 'as' => 'cart.'], function(){
 });
 Route::delete('/cart-remove_cart', [CartController::class, 'removeCart'])->name('remove_cart');
 Route::patch('/cart-update_cart', [CartController::class, 'updateCart'])->name('update_cart');
+
+
+/**
+ * *--------Invoice Route-------
+ */
+Route::group(['prefix' => 'invoice', 'as' => 'invoice.'], function(){
+    Route::get('/generate-invoice/{id}', [InvoiceController::class, 'generateInvoice'])->name('generate');
+});
+
+
+/**
+ * *--------Order Update Route-------
+ */
+Route::group(['prefix' => 'admin/order', 'middleware' => ['auth:admin'], 'as' => 'order.'], function(){
+    Route::get('/status-edit/{id}', [OrderUpdate::class, 'editStatus'])->name('edit-status');
+    Route::post('/update-edit/{id}', [OrderUpdate::class, 'updateStatus'])->name('update-status');
+});
+
+
 
 

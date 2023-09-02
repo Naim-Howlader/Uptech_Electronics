@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\BlogCategory;
 use App\Models\Product;
 use App\Models\Blog;
+use App\Models\Order;
 
 class AdminDashboardController extends Controller
 {
@@ -21,5 +22,10 @@ class AdminDashboardController extends Controller
         $blogs = Blog::latest()->with('categories')->get();
         $data = compact('blog_categories','blogs');
         return view('admin.blogs')->with($data);
+    }
+    public function orders(){
+        $orders = Order::get();
+        $data = compact('orders');
+        return view('admin.order')->with($data);
     }
 }
