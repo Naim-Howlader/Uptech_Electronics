@@ -12,6 +12,9 @@ use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\OrderUpdate;
+use App\Http\Controllers\SslCommerzPaymentController;
+use App\Http\Controllers\UserProfileController;
+use Illuminate\Routing\RouteGroup;
 
 /*
 |--------------------------------------------------------------------------
@@ -141,6 +144,34 @@ Route::group(['prefix' => 'admin/order', 'middleware' => ['auth:admin'], 'as' =>
     Route::get('/status-edit/{id}', [OrderUpdate::class, 'editStatus'])->name('edit-status');
     Route::post('/update-edit/{id}', [OrderUpdate::class, 'updateStatus'])->name('update-status');
 });
+
+
+
+/** 
+ * * ---------User Profile Controller----------
+ * */
+Route::group(['prefix' => 'user/profile', 'middleware' => 'web', 'as' => 'profile.'],function(){
+    Route::get('/dashboard', [UserProfileController::class, 'dashboard'])->name('dashboard');
+    Route::get('/my-orders', [UserProfileController::class, 'myOrders'])->name('my-orders');
+});
+
+
+/** 
+ * * ---------SSL commerce payment gateway----------
+ * */
+Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout'])->name('example2');
+
+Route::post('/pay', [SslCommerzPaymentController::class, 'index'])->name('pay');
+Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax'])->name('payAjax');
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+
+
 
 
 

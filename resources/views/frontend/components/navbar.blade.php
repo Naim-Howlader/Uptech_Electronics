@@ -3,7 +3,7 @@
         <div class="text pb-3">
             <h2>New Offers This Weekend Only To Get 50%</h2>
         </div>
-        <div class="icon flex justify-center gap-x-5 pb-3">
+        <div class="icon flex justify-between gap-x-5 pb-3">
             <div class="single-icon flex "id="dropdownDefaultButton" data-dropdown-toggle="dropdown">
                 <h2 class="text-[14px] cursor-pointer">EN</h2>
                 <span class="material-symbols-outlined text-lg cursor-pointer">
@@ -42,42 +42,53 @@
                     </ul>
                 </div>
             </div>
-            <div class="single-icon flex">
-                {{-- <h2 class="text-[14px] cursor-pointer">Login</h2>
-                <span class="material-symbols-outlined text-lg cursor-pointer">
-                    login
-                </span> --}}
-                @if (Route::has('login'))
-                    <div class="">
-                        @auth
-                            {{-- <a href="{{ url('/dashboard') }}" class="">Dashboard</a> --}}
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-
-                                <div :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                    this.closest('form').submit();">
-                                    <div class="flex cursor-pointer space-x-1">
-                                        <div class="text-xl">
-                                            <ion-icon name="log-out-outline"></ion-icon>
-                                        </div>
-                                        <div>
-                                            <h2>Log out</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        @else
-                            <a href="{{ route('login') }}" class="pr-5">Log
-                                in</a>
-
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="">Register</a>
-                            @endif
-                        @endauth
-                    </div>
-                @endif
+            
+           <div class="flex justify-center items-center">
+            @if (Route::has('login'))
+           @auth
+           <div>
+            <a href="{{route('profile.dashboard')}}">
+                <div class="">
+                    <span class="material-symbols-outlined cursor-pointer ">
+                        account_circle
+                        </span>
+                </div>
+           </div>
+           @endauth
+            @endif
             </div>
+            </a>
+           
+            @if (Route::has('login'))
+                    
+            @auth
+                {{-- <a href="{{ url('/dashboard') }}" class="">Dashboard</a> --}}
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <div :href="route('logout')"
+                        onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        <div class="flex cursor-pointer space-x-1">
+                            <div class="text-xl">
+                                <ion-icon name="log-out-outline"></ion-icon>
+                            </div>
+                            <div>
+                                <h2>Log out</h2>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            @else
+                <a href="{{ route('login') }}" class="pr-5">Log
+                    in</a>
+
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="">Register</a>
+                @endif
+            @endauth
+        
+    @endif
         </div>
     </div>
 

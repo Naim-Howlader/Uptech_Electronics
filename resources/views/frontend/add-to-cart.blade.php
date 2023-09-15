@@ -229,7 +229,7 @@
                                             class="h-6 ml-3">
                                     </label>`
                                 </div>
-                                <form action="{{ route('cart.place-order') }}" method="post">
+                                <form action="{{ route('pay') }}" method="post">
                                     @csrf
                                     <div>
                                         <div class="mb-3">

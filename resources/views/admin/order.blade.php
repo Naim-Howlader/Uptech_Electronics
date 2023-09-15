@@ -64,6 +64,12 @@
                     Mobile
                 </th>
                 <th scope="col" class="px-6 py-3 w-[100px]">
+                    Transaction ID
+                </th>
+                <th scope="col" class="px-6 py-3 w-[100px]">
+                    Invoice No
+                </th>
+                <th scope="col" class="px-6 py-3 w-[100px]">
                     Address
                 </th>
                 <th scope="col" class="px-6 py-3">
@@ -76,11 +82,11 @@
         </thead>
         <tbody>
             @php
-                $sl = 1;
+                $sls = 1;
             @endphp
             @foreach ($orders as $order)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{-- @php
                  //echo $order->cart_details;
                   $single = (json_decode($order->cart_details));
@@ -95,9 +101,9 @@
                         {{$item->product_name ." * ".$item->product_quantity}}<br>
                     @endforeach
                     @endphp --}}
-                {{$sl++}}
+                {{$sls++}}
 
-                </th>
+                </td>
                 <td class="px-6 py-4">
 
     <div class="relative overflow-x-auto">
@@ -176,6 +182,12 @@
                 </td>
                 <td class="px-6 py-4">
                     {{$order->mobile}}
+                </td>
+                <td class="px-6 py-4">
+                    {{$order->transaction_id}}
+                </td>
+                <td class="px-6 py-4">
+                    {{$order->invoice_id}}
                 </td>
                 <td class="px-6 py-4">
                    <div class="w-[200px]">

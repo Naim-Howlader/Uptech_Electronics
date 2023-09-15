@@ -1,0 +1,6 @@
+@include('frontend.profile-components.header')
+@include('frontend.profile-components.bg')
+@include('frontend.profile-components.sidenav')
+@include('frontend.profile-components.topnav')
+@yield('main')
+@include('frontend.profile-components.footer')

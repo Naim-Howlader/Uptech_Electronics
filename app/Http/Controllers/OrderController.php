@@ -24,6 +24,7 @@ class OrderController extends Controller
 
         ];
         }
+        $order->product_id = '1';
         $order->user_id = auth()->user()->id;
         $order->cart_details = json_encode($place);
         $order->name = $request['name'];
@@ -33,6 +34,7 @@ class OrderController extends Controller
         $order->city = $request['city'];
         $order->region = $request['region'];
         $order->zip = $request['zip'];
+        $order->status = 'Pending';
         $order->country = $request['country'];
         $order->date = date('Y-m-d');
         $order->save();

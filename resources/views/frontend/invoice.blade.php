@@ -92,17 +92,25 @@
                             <span class="data-span">Name:</span> {{$order->name}}<br>
                             <span class="data-span">Email:</span> {{$order->email}} <br>
                             <span class="data-span">Phone: </span> {{$order->mobile}} <br>
+                            <span class="data-span">Transaction ID: </span> {{$order->transaction_id}} <br>
+                            <span class="data-span">Invoice Id: </span> {{$order->invoice_id}} <br>
                             <span class="data-span">Address:</span> {{$order->street.', '.$order->city.', '.$order->region}}
                         </td>
                         <td>
-
-                                {{date('d M, Y')}}
+                                <div>
+                                    <h2>Order Date</h2>
+                                    <span>{{$order->date}}</span>
+                                </div>
+                                <div>
+                                    <h2>Delivery Date</h2>
+                                    <span>{{date('Y-m-d')}}</span>
+                                </div>
 
                         <td>
                             <span class="data-span"> Package Fee:</span>0.00 <br>
                             <span class="data-span"> Sub Total:</span>{{$total}} <br>
                             <span class="data-span"> Tax: </span>0.00 <br>
-                            <span class="data-span"> Total:</span>{{$total}} <br>
+                            <b><span class="data-span"> Total:</span>{{$total}}</b> <br>
                             <span class="data-span">Payment Status: </span>Cash on delivery
                         </td>
                     </tr>

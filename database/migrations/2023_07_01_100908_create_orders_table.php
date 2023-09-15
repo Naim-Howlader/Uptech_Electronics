@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id')->nullable();
             $table->integer('product_id')->nullable();
-            $table->text('cart_details');
+            $table->text('cart_details')->nullable();
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('mobile')->nullable();
@@ -24,8 +24,14 @@ return new class extends Migration
             $table->string('region')->nullable();
             $table->string('zip')->nullable();
             $table->string('country')->nullable();
-            $table->string('date')->nullable();
-            $table->string('status')->default('pending');
+            $table->string('transaction_id')->default('1234');
+            $table->string('invoice_id')->default('1234');
+            $table->string('phone')->default('1234');
+            $table->string('amount')->default('1234');
+            $table->string('address')->default('abc');
+            $table->string('currency')->default('BDT');
+            $table->string('date')->default('14');
+            $table->string('status');
             $table->timestamps();
         });
     }

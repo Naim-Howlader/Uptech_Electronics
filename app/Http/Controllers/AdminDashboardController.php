@@ -24,7 +24,7 @@ class AdminDashboardController extends Controller
         return view('admin.blogs')->with($data);
     }
     public function orders(){
-        $orders = Order::get();
+        $orders = Order::latest('id')->get();
         $data = compact('orders');
         return view('admin.order')->with($data);
     }
