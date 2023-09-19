@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Models\BlogCategory;
+use App\Models\NewsLetter;
 use Illuminate\Support\Facades\File;
+use App\Jobs\NewsletterJob;
 
 class BlogController extends Controller
 {
@@ -35,6 +37,13 @@ class BlogController extends Controller
             $blog->status = 'active';
         }
         $blog->save();
+        //When a blog will publish a email will sent to the user using the code bellow
+        $users = NewsLetter::get();
+        foreach($users as $user){
+            $data['email'] = $user->email;
+            dispatch(new NewsletterJob($data));
+        }
+
         session()->flash('success', 'Blog added successfully');
         return redirect()->route('admin.blogs');
     }

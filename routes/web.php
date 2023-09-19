@@ -11,6 +11,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\NewsLetterController;
 use App\Http\Controllers\OrderUpdate;
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\UserProfileController;
@@ -153,6 +154,15 @@ Route::group(['prefix' => 'admin/order', 'middleware' => ['auth:admin'], 'as' =>
 Route::group(['prefix' => 'user/profile', 'middleware' => 'web', 'as' => 'profile.'],function(){
     Route::get('/dashboard', [UserProfileController::class, 'dashboard'])->name('dashboard');
     Route::get('/my-orders', [UserProfileController::class, 'myOrders'])->name('my-orders');
+});
+
+
+
+/** 
+ * * ---------News Letter Route----------
+ * */
+Route::group(['prefix' => 'newsletter', 'as' => 'newsletter.'], function(){
+    Route::post('/subscribe', [NewsLetterController::class, 'subscribe'])->name('subscribe');
 });
 
 

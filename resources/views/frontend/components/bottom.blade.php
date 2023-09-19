@@ -85,10 +85,14 @@
             <p class="text-gray-400 pt-5 pb-5">Subscribe to the weekly newsletter for all the latest updates & get a 10%
                 off bill
                 offers.</p>
-            <div class="flex sm:w-[80%] lg:w-[90%]">
-                <input type="text" class="w-[70%] lg:w-[60%] h-[55px]" placeholder="Enter Your Email....">
-                <button class="bg-[#ff3f34] w-[30%] lg:w-[40%]  text-white capitalize">subscribe</button>
-            </div>
+                <form action="{{route('newsletter.subscribe')}}" method="POST">
+                    @csrf
+                    <div class="flex sm:w-[80%] lg:w-[90%]">
+                        <input type="text" name="email" class="w-[70%] lg:w-[60%] h-[55px]" placeholder="Enter Your Email....">
+                        <button type="submit" class="bg-[#ff3f34] w-[30%] lg:w-[40%]  text-white capitalize">subscribe</button>
+                    </div>
+                </form>
+            
             <div>
                 <div class="social-icon mt-8 flex mb-[30px]">
                     <h2 class="capitalize text-gray-400 pr-5">or follow us :</h2>

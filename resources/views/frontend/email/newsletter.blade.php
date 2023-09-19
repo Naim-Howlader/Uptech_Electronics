@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    hellow 
+    <h2>Hello User we recently published a blog.</h2>
+    <h2>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod est temporibus, inventore tempore eveniet praesentium aspernatur pariatur? Exercitationem, consequuntur. Reprehenderit.</h2>
 </body>
 </html>
