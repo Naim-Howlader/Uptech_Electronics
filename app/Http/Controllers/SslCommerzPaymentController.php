@@ -8,6 +8,7 @@ use App\Library\SslCommerz\SslCommerzNotification;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
+use App\Jobs\OrderConfirmJob;
 
 class SslCommerzPaymentController extends Controller
 {
@@ -102,12 +103,13 @@ class SslCommerzPaymentController extends Controller
                 'transaction_id' => $post_data['tran_id'],
                 'currency' => $post_data['currency']
             ]);
-            
+            //$user = User::where('id', auth()->user()->id)->get();
+
             $request->session()->forget('cart');
         $sslc = new SslCommerzNotification();
         # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )
         $payment_options = $sslc->makePayment($post_data, 'hosted');
-        
+
 
         if (!is_array($payment_options)) {
             print_r($payment_options);
@@ -190,6 +192,9 @@ class SslCommerzPaymentController extends Controller
     public function success(Request $request)
     {
         //echo "Transaction is Successful";
+         $user = Order::where('status', 'Pending')->get();
+         $data['email'] = $user->email;
+         dispatch(new OrderConfirmJob($data));
 
         $tran_id = $request->input('tran_id');
         $amount = $request->input('amount');
@@ -226,6 +231,7 @@ class SslCommerzPaymentController extends Controller
             #That means something wrong happened. You can redirect customer to your product page.
             echo "Invalid Transaction";
         }
+
         return view('frontend.payment-success');
 
 

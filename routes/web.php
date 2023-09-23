@@ -17,6 +17,8 @@ use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Routing\RouteGroup;
 
+use App\Models\User;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -148,7 +150,7 @@ Route::group(['prefix' => 'admin/order', 'middleware' => ['auth:admin'], 'as' =>
 
 
 
-/** 
+/**
  * * ---------User Profile Controller----------
  * */
 Route::group(['prefix' => 'user/profile', 'middleware' => 'web', 'as' => 'profile.'],function(){
@@ -158,7 +160,7 @@ Route::group(['prefix' => 'user/profile', 'middleware' => 'web', 'as' => 'profil
 
 
 
-/** 
+/**
  * * ---------News Letter Route----------
  * */
 Route::group(['prefix' => 'newsletter', 'as' => 'newsletter.'], function(){
@@ -166,7 +168,7 @@ Route::group(['prefix' => 'newsletter', 'as' => 'newsletter.'], function(){
 });
 
 
-/** 
+/**
  * * ---------SSL commerce payment gateway----------
  * */
 Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
@@ -180,6 +182,15 @@ Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
 Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 
 Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+
+
+
+
+Route::get('/emailtest', function(){
+    // $user = User::where('id', auth()->user()->id)->get();
+    //     return $user;
+    return auth()->user()->id;
+});
 
 
 
