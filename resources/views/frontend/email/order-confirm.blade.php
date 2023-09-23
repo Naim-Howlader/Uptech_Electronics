@@ -7,6 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>It's working</h2>
+    <h2>Dear Customer</h2>
+    <p>Your order has been placed. Now it is pending. For any update check your dashboard.</p>
+    <a href="{{url('/')}}">
+        <p>Visit our website</p>
+    </a>
+    <p>Have a nice day</p>
 </body>
 </html>

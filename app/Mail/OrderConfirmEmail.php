@@ -18,7 +18,7 @@ class OrderConfirmEmail extends Mailable
      */
     public function __construct()
     {
-        //
+        
     }
 
     /**

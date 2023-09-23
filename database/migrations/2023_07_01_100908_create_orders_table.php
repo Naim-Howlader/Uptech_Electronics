@@ -32,6 +32,7 @@ return new class extends Migration
             $table->string('currency')->default('BDT');
             $table->string('date')->default('14');
             $table->string('status');
+            $table->string('transaction_status');
             $table->timestamps();
         });
     }

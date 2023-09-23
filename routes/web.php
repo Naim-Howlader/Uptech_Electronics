@@ -17,7 +17,7 @@ use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Routing\RouteGroup;
 
-use App\Models\User;
+use App\Models\Order;
 
 /*
 |--------------------------------------------------------------------------
@@ -186,11 +186,16 @@ Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 
 
 
-Route::get('/emailtest', function(){
-    // $user = User::where('id', auth()->user()->id)->get();
-    //     return $user;
-    return auth()->user()->id;
-});
+// Route::get('/emailtest', function(){
+//     // $user = User::where('id', auth()->user()->id)->get();
+//     //     return $user;
+//     $order = Order::where('transaction_status', 'Completed')->get();
+//     foreach($order as $single){
+//         echo $single->name;
+//     }
+//     echo url('/');
+
+// });
 
 
 
