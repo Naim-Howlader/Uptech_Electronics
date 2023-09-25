@@ -16,9 +16,10 @@ class OrderConfirmEmail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public $input;
+    public function __construct($data)
     {
-        
+        $this->input = $data;
     }
 
     /**

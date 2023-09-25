@@ -106,7 +106,12 @@ class SslCommerzPaymentController extends Controller
                 'currency' => $post_data['currency']
             ]);
             //$user = User::where('id', auth()->user()->id)->get();
-           
+            // $user = Order::where('transaction_status', 'Pending')->get();
+            //         foreach($user as $single){
+            //             $data['email'] = $single->email;
+            //           dispatch(new OrderConfirmJob($data));
+            //         }
+
         $sslc = new SslCommerzNotification();
         # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )
         $payment_options = $sslc->makePayment($post_data, 'hosted');
@@ -198,7 +203,7 @@ class SslCommerzPaymentController extends Controller
         //  dispatch(new OrderConfirmJob($data));
         $order = Order::where('transaction_status', 'Pending')->get();
                 //foreach($order as $single){
-                    
+
                 //};
         $tran_id = $request->input('tran_id');
         $amount = $request->input('amount');
@@ -223,18 +228,22 @@ class SslCommerzPaymentController extends Controller
                 $update_product = DB::table('orders')
                     ->where('transaction_id', $tran_id)
                     ->update(['transaction_status' => 'Processing']);
+
+                    // $update_product = DB::table('orders')
+                    // ->where('transaction_id', $tran_id)
+                    // ->update(['transaction_status' => 'Completed']);
                     $user = Order::where('transaction_status', 'Processing')->get();
                     foreach($user as $single){
-                        $data['email'] = $single->email;
+                        $data = $single;
                       dispatch(new OrderConfirmJob($data));
                     }
                     $update_product = DB::table('orders')
                     ->where('transaction_id', $tran_id)
-                    ->update(['transaction_status' => 'Completed']);
-                      
+                    ->update(['transaction_status' => 'Complete']);
+
 
                 //echo "<br >Transaction is successfully Completed";
-                
+
             }
         } else if ($order_details->transaction_status == 'Processing' || $order_details->transaction_status == 'Complete') {
             /*

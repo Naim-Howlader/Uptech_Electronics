@@ -7,7 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>Hello User we recently published a blog.</h2>
-    <h2>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod est temporibus, inventore tempore eveniet praesentium aspernatur pariatur? Exercitationem, consequuntur. Reprehenderit.</h2>
+<h2>Dear Subscriber</h2>
+<p>A new blog is published recently in our website. To check it out visit our website.</p>
+<p>{{url('/')}}</p>
 </body>
 </html>

@@ -16,9 +16,10 @@ class NewsLetterEmail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public $input;
+    public function __construct($data)
     {
-        //
+        $this->input = $data;
     }
 
     /**
@@ -27,7 +28,7 @@ class NewsLetterEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'A new blog has published recently',
+            subject: 'A new blog has published',
         );
     }
 

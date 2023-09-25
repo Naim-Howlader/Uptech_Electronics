@@ -18,10 +18,10 @@ class OrderConfirmJob implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    protected $data;
+    public $input;
     public function __construct($data)
     {
-        $this->data = $data;
+        $this->input = $data;
     }
 
     /**
@@ -29,7 +29,7 @@ class OrderConfirmJob implements ShouldQueue
      */
     public function handle(): void
     {
-        $email = new OrderConfirmEmail();
-        Mail::to($this->data['email'])->send($email);
+        //$email = new OrderConfirmEmail();
+        Mail::to($this->input->email)->send(new OrderConfirmEmail($this->input));
     }
 }

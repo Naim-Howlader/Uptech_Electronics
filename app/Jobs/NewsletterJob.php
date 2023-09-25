@@ -17,10 +17,10 @@ class NewsletterJob implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    protected $data;
+    public $input;
     public function __construct($data)
     {
-        $this->data = $data;
+        $this->input = $data;
     }
 
     /**
@@ -28,7 +28,8 @@ class NewsletterJob implements ShouldQueue
      */
     public function handle(): void
     {
-        $email = new NewsLetterEmail();
-        Mail::to($this->data['email'])->send($email);
+        //$email = new NewsLetterEmail();
+        Mail::to($this->input['email'])->send(new NewsLetterEmail($this->input));
+        //info(Mail::to($this->data['email'])->send($email));
     }
 }
