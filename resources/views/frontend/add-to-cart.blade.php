@@ -221,14 +221,14 @@
                         <div
                             class="w-full mx-auto rounded-lg bg-white border border-gray-200 text-gray-800 font-light mb-6">
                             <div class="w-full p-3 border-b border-gray-200">
-                                <div class="mb-5">
+                                {{-- <div class="mb-5">
                                     <label for="type1" class="flex items-center cursor-pointer">
                                         <input type="radio" class="form-radio h-5 w-5 text-indigo-500" name="type"
                                             id="type1" checked>
                                         <img src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png"
                                             class="h-6 ml-3">
                                     </label>`
-                                </div>
+                                </div> --}}
                                 <form action="{{ route('pay') }}" method="post">
                                     @csrf
                                     <div>
@@ -352,13 +352,25 @@
                                         </div>
                                     </div>
                             </div>
-                            <div class="w-full p-3">
+                            {{-- <div class="w-full p-3">
                                 <label for="type2" class="flex items-center cursor-pointer">
                                     <input type="radio" class="form-radio h-5 w-5 text-indigo-500" name="type"
                                         id="type2">
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
                                         width="80" class="ml-3" />
                                 </label>
+                            </div> --}}
+
+                            <div class="w-full p-3">
+                                <div class="flex items-center mb-4">
+                                    <input id="default-radio-1" name="paymethod" type="radio" value="cod" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Cash on delivery</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input checked id="default-radio-2" name="paymethod" type="radio" value="online" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <label for="default-radio-2" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Online Payment</label>
+                                </div>
+
                             </div>
                         </div>
                         <div>

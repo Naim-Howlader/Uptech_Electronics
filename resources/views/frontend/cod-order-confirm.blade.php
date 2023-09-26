@@ -16,8 +16,8 @@
               </path>
           </svg>
           <div class="text-center">
-              <h3 class="md:text-2xl text-base text-gray-900 font-semibold text-center">Payment Done!</h3>
-              <p class="text-gray-600 my-2">Thank you for completing your secure online payment.</p>
+              <h3 class="md:text-2xl text-base text-gray-900 font-semibold text-center">Your order placed successfully !</h3>
+              <p class="text-gray-600 my-2">Thank you for make order form Uptech Electronics.</p>
               <p> Have a great day.</p>
               <div class="py-10 text-center">
                   <a href="{{route('index')}}" class="px-12 text-white font-semibold py-3">

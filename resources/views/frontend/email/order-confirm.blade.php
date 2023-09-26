@@ -1,25 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    {{$input->name}}
-    @php
-        $items = (json_decode($input->cart_details));
-    @endphp
-    @foreach ($items as $item)
-        <h2>{{$item->product_name}}</h2>
-    @endforeach
-</body>
-</html>
-
-
-
-<!DOCTYPE html>
 <html>
 <head>
 <title></title>
@@ -116,7 +95,7 @@ For what reason would it be advisable for me to think about business content? Th
                     <tr>
                         <td align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 10px;">
                             <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: #777777;">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium iste ipsa numquam odio dolores, nam.
+                                Dear {{$input->name}}. Your order placed successfully. Here is your order details. For more visit out website.
                             </p>
                         </td>
                     </tr>
@@ -124,27 +103,33 @@ For what reason would it be advisable for me to think about business content? Th
                         <td align="left" style="padding-top: 20px;">
                             <table cellspacing="0" cellpadding="0" border="0" width="100%">
                                 <tr>
-                                    <td width="75%" align="left" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;">
+                                    <td width="50%" align="left" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;">
                                        Product
                                     </td>
                                     <td width="25%" align="left" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;">
-                                        Price
+                                        Per Price
+                                     </td>
+                                    <td width="25%" align="left" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;">
+                                        Total Price
                                     </td>
                                 </tr>
                                 @php
                                     $items = (json_decode($input->cart_details));
+                                    $total = 0;
                                 @endphp
-
-
-
-
                                @foreach ($items as $item)
+                               @php
+                                   $total += $item->product_price*$item->product_quantity;
+                               @endphp
                                <tr>
-                                <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
-                                    {{$item->product_name}}
+                                <td width="50%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
+                                    {{$item->product_name}} X {{$item->product_quantity}}
                                 </td>
                                 <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
                                     {{$item->product_price}}
+                                </td>
+                                <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
+                                    {{$item->product_quantity*$item->product_price}}
                                 </td>
                             </tr>
                                @endforeach
@@ -160,7 +145,7 @@ For what reason would it be advisable for me to think about business content? Th
                                         TOTAL
                                     </td>
                                     <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px; border-top: 3px solid #eeeeee; border-bottom: 3px solid #eeeeee;">
-                                        $115.00
+                                        {{$total}}
                                     </td>
                                 </tr>
                             </table>
@@ -181,7 +166,7 @@ For what reason would it be advisable for me to think about business content? Th
                                     <tr>
                                         <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
                                             <p style="font-weight: 800;">Delivery Address</p>
-                                            <p>675 Massachusetts Avenue<br>11th Floor<br>Cambridge, MA 02139</p>
+                                            <p>{{$input->street}}<br>{{$input->city}}<br>{{$input->region}}<br>{{$input->country}}</p>
 
                                         </td>
                                     </tr>
@@ -192,7 +177,7 @@ For what reason would it be advisable for me to think about business content? Th
                                     <tr>
                                         <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
                                             <p style="font-weight: 800;">Estimated Delivery Date</p>
-                                            <p>January 1st, 2016</p>
+                                            <p>January 1st, 2024</p>
                                         </td>
                                     </tr>
                                 </table>
